@@ -1,0 +1,479 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#081219"><title>Fourth Space · Beyond the visible</title><style>:root{color-scheme:dark;--ink:#e6f3f0;--muted:#92aaa9;--mint:#a5f5db;--line:#91d2c22b}*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#061018;color:var(--ink);font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}button,a{touch-action:manipulation}button{font:inherit;color:inherit;border:1px solid var(--line);border-radius:8px;background:#0a1b22c9;padding:10px 15px;cursor:pointer}button:hover{background:#1a393e}button:disabled{opacity:.3;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:4px}button[hidden],[hidden]{display:none!important}kbd{font:10px ui-monospace,monospace;border:1px solid #769d9a40;border-radius:3px;padding:2px 4px;color:#bdd4d1;margin-left:5px}#world,.vignette{position:fixed;inset:0;width:100%;height:100%}#world{touch-action:none}.vignette{pointer-events:none;background:linear-gradient(180deg,#031016a6,transparent 40%,#031016a6),radial-gradient(ellipse,transparent 40%,#020d156b)}header{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:25px 34px;z-index:2;gap:12px}.wordmark{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:2px;font-weight:650;text-decoration:none;color:var(--ink)}.mark{font-size:31px;color:var(--mint);line-height:1}.wordmark small{font:9px ui-monospace,monospace;letter-spacing:1px;color:var(--muted);padding-left:15px;border-left:1px solid var(--line)}.top-actions{display:flex;gap:8px}.top-actions button{font-size:12px;padding:8px 12px}.top-actions span{margin-left:10px}.landing{position:fixed;left:8%;top:20%;max-width:570px;z-index:1;pointer-events:none}.landing>*{pointer-events:auto}.eyebrow{font:10px ui-monospace,monospace;letter-spacing:2.4px;color:var(--mint);text-transform:uppercase}.landing h1{font-weight:400;font-size:clamp(65px,7.5vw,110px);line-height:.98;letter-spacing:-6px;margin:27px 0}.landing em{font:italic 1.08em Georgia,serif;color:var(--mint)}.landing p{color:#bad0cf;font-size:17px;line-height:1.8}.primary{background:var(--mint);color:#06211f;font-weight:650;min-width:245px;margin-top:22px;padding:17px 21px;border:0;border-radius:5px}.primary:hover{background:#c3ffec}.primary span{float:right;padding-left:30px}.landing-meta{display:flex;align-items:center;gap:13px;font:10px ui-monospace,monospace;color:#98b6b3;margin-top:22px}.landing-meta i{width:3px;height:3px;background:#5d9c91;border-radius:50%}.landing-note{font-size:11px;color:#819f9f;margin-top:35px}.mission{position:fixed;top:108px;left:34px;width:280px;pointer-events:none}.mission h1{font-size:25px;font-weight:450;letter-spacing:-.6px;margin:10px 0}.mission p{font-size:12px;line-height:1.7;color:#c0d0cf;margin:0;text-shadow:0 2px 6px #000}.stats{display:flex;gap:19px;margin-top:16px;color:var(--muted);font:10px ui-monospace,monospace}.stats b{color:var(--mint);font-size:14px;font-weight:400}.phase{position:fixed;right:34px;top:108px;width:190px;text-align:right}.phase-value{font:22px ui-monospace,monospace;margin:10px 0}.phase-value span{font-size:40px;color:var(--mint);padding-left:6px}.phase-value small{display:block;font-size:9px;letter-spacing:2px;color:#a5bab8}.coordinate{font:10px ui-monospace,monospace;color:#a4b9b8;margin-top:12px}#phaseTrack{display:flex;gap:4px;justify-content:flex-end}#phaseTrack i{height:3px;width:28px;background:#718f8c45}#phaseTrack i.on{background:var(--mint);box-shadow:0 0 10px #a5f5db80}.reticle{position:fixed;top:50%;left:50%;width:18px;height:18px;transform:translate(-50%,-50%);border:1px solid #c6ffe43b;border-radius:50%;pointer-events:none}.reticle i{position:absolute;width:2px;height:2px;background:#d1fff0;top:7px;left:7px}.feedback{position:fixed;bottom:106px;left:50%;transform:translateX(-50%);text-align:center;max-width:570px;width:90%;pointer-events:none}#status{font-size:13px;text-shadow:0 2px 9px #000;background:#05151bcc;display:inline-block;border:1px solid var(--line);padding:9px 16px;border-radius:30px}#directionInfo{font:10px ui-monospace,monospace;letter-spacing:1px;color:#b8d7cf;margin-top:10px;text-shadow:0 2px 7px #000}.bottom{position:fixed;bottom:24px;left:34px;right:34px;display:flex;justify-content:space-between;align-items:center;gap:20px}.bottom-actions{display:flex;gap:8px}.bottom-actions button{font-size:11px}.desktop-help{color:#9ab6b1;font-size:10px;max-width:630px;text-align:right;line-height:2}.touch-controls{display:none}#transitionLabel{position:fixed;top:41%;left:50%;transform:translate(-50%,-50%);font:12px ui-monospace,monospace;letter-spacing:5px;color:var(--mint);pointer-events:none;white-space:nowrap}dialog{width:min(700px,calc(100% - 28px));max-height:86dvh;background:#0c1b23f5;border:1px solid #436564;border-radius:14px;color:var(--ink);padding:0;box-shadow:0 30px 120px #000a}dialog::backdrop{background:#01080dbb;backdrop-filter:blur(8px)}.dialog-head{display:flex;justify-content:space-between;align-items:center;padding:20px 26px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#0c1b23;z-index:1}.dialog-head span{font:10px ui-monospace,monospace;letter-spacing:2px;color:var(--mint)}.dialog-head button{padding:5px 10px;font-size:12px}#panelBody{padding:26px}#panelBody h2{font-size:30px;font-weight:450;letter-spacing:-1px;margin:0 0 12px}#panelBody h3{font-weight:500;color:var(--mint);margin:23px 0 8px}#panelBody p{color:#adc2c1;line-height:1.8}#panelBody strong{color:var(--ink)}.expeditions{display:grid;grid-template-columns:1fr 1fr;gap:12px}.expedition{text-align:left;padding:22px;background:linear-gradient(135deg,#16302e,#0b1a23);min-height:160px;display:block}.expedition small{display:block;color:var(--mint);font:10px ui-monospace,monospace;letter-spacing:1px;margin-bottom:15px}.expedition b{display:block;font-size:18px;font-weight:450}.expedition p{font-size:12px;margin-bottom:0}.controls-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:12px;color:#a8bfbb}.controls-list div{border-bottom:1px solid var(--line);padding:10px 0}.option{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);gap:20px}.option input{width:19px;height:19px;accent-color:var(--mint)}.fine{font-size:11px!important;color:#789996!important}.atlas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.map-card{background:#06131b;border:1px solid var(--line);border-radius:7px;padding:10px}.map-card canvas{width:100%;display:block}.map-card b{font:10px ui-monospace,monospace;color:var(--mint)}.seedrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.seedrow input{width:140px;background:#06141b;color:var(--ink);border:1px solid var(--line);padding:10px;border-radius:6px}#fatal{position:fixed;inset:20%;z-index:20;background:#0a1922;padding:30px;border:1px solid #5d8c83}body.phase-shift .vignette{background:radial-gradient(ellipse,transparent,#a5f5db28)}@media(pointer:coarse),(max-width:760px){header{padding:17px}.wordmark{font-size:10px;gap:7px}.wordmark small{display:none}.mark{font-size:25px}.top-actions button{font-size:10px;padding:7px}.top-actions kbd{display:none}.mission{left:18px;top:85px;width:200px}.mission h1{font-size:21px;margin:6px 0}.mission p{font-size:10px}.mission .stats{margin-top:8px;font-size:9px}.phase{right:18px;top:87px;width:110px}.phase .eyebrow{font-size:8px;letter-spacing:1px}.phase-value{font-size:16px;margin:6px 0}.phase-value span{font-size:28px}.phase-value small{font-size:8px}.coordinate{font-size:8px}.touch-controls{display:flex;position:fixed;bottom:70px;left:17px;right:17px;justify-content:space-between;align-items:end;pointer-events:none}.touch-controls button{pointer-events:auto;min-height:43px;padding:8px 14px;background:#071820dc;border-color:#99c6ba44}.dpad{display:grid;grid-template-columns:repeat(3,43px);gap:5px}.axis-controls{display:grid;grid-template-columns:repeat(2,52px);gap:5px}.axis-controls button{font:11px ui-monospace,monospace;padding:8px}.feedback{bottom:190px}#status{font-size:11px;padding:7px 12px}#directionInfo{font-size:8px}.bottom{left:17px;right:17px;bottom:16px}.desktop-help{display:none}.bottom-actions{width:100%;justify-content:center}.bottom-actions kbd{display:none}.bottom-actions button{padding:7px 15px}.landing{left:8%;top:23%;right:7%}.landing h1{font-size:68px;letter-spacing:-4px}.landing p{font-size:14px}.landing-meta{font-size:9px;gap:8px}.landing-note{margin-top:25px}.expeditions{grid-template-columns:1fr}.expedition{min-height:0;padding:18px}.expedition small{margin-bottom:6px}.dialog-head,#panelBody{padding:18px}.controls-list{grid-template-columns:1fr}#panelBody h2{font-size:25px}}@media(max-height:620px){.landing{top:18%}.landing h1{font-size:58px;margin:15px 0}.landing-note{display:none}.landing p{font-size:13px;margin:8px 0}.primary{margin-top:10px;padding:12px}.mission p{display:none}.phase{top:80px}.mission{top:80px}.feedback{bottom:140px}.touch-controls{bottom:53px}.bottom{bottom:8px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+.phase-buttons{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:14px}.phase-buttons button{padding:8px 5px;font:12px ui-monospace,monospace;border-color:#a5f5db70}.phase-buttons button:disabled{opacity:.38}.phase-buttons kbd{font-size:9px;margin-left:2px}#phaseCue{font-size:10px;line-height:1.5;color:#bcd7d0;margin:7px 0 0}@media(max-width:760px),(pointer:coarse){.phase-buttons{gap:4px;margin-top:9px}.phase-buttons button{font-size:10px;padding:8px 3px}.phase-buttons kbd{display:none}#phaseCue{font-size:8px}}
+
+/* Continuous-section laboratory. The original expedition HUD remains separate. */
+.lab-entry{display:block;min-width:245px;margin-top:12px;text-align:left;border-color:#9ddccb65;font-size:12px;pointer-events:auto}.lab-entry span{display:block;color:var(--mint);font:8px ui-monospace,monospace;letter-spacing:1.5px;margin-top:3px}.lab-menu-entry{width:100%;margin-top:14px;min-height:0;border-color:#99e5cd66}.lab-mode .vignette{background:linear-gradient(180deg,#031016a6,transparent 40%,#03101660)}#lab{position:fixed;inset:0;pointer-events:none}#lab button,#lab input,#lab select,#lab summary{pointer-events:auto}.lab-heading{position:absolute;top:106px;left:34px;max-width:430px}.lab-heading h1{font-weight:450;letter-spacing:-1px;font-size:30px;line-height:1.15;margin:12px 0}.lab-heading p{font-size:12px;color:#acc3bf;max-width:330px;line-height:1.7}.specimen-tabs{display:flex;gap:7px;margin-top:20px}.specimen-tabs button{font-size:11px;padding:8px 12px;background:#0a1a22e6}.specimen-tabs button[aria-pressed=true]{color:#09201b;background:var(--mint);border-color:var(--mint)}.lab-readout{position:absolute;right:34px;top:108px;width:260px;background:#06141bdc;border:1px solid var(--line);border-radius:12px;padding:18px;pointer-events:auto}.lab-readout .eyebrow{font-size:8px;letter-spacing:1.4px}.lab-state{font-size:19px;font-weight:450;margin:10px 0}.lab-readout p{font-size:11px;line-height:1.6;color:#aec9c2}.lab-metrics{margin:18px 0}.lab-metrics div{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #87c3b51a;padding:7px 0;font-size:10px}.lab-metrics dt{color:#8daea7}.lab-metrics dd{margin:0;font:10px ui-monospace,monospace;color:#c5dfd6}#probeDetails summary{font-size:11px;color:#d7c289;cursor:pointer}#probeDetails p{font-size:10px}.probe-inputs{display:flex;gap:8px}.probe-inputs label{display:flex;align-items:center;gap:4px;color:#d8c48b;font:10px ui-monospace,monospace}.probe-inputs input{width:48px;padding:6px 2px;background:#12262b;border:1px solid #698b7944;border-radius:4px;color:#e5eddc;font:11px ui-monospace,monospace}.probe-state{font:9px/1.6 ui-monospace,monospace;color:#c4b77d;margin-top:10px}#labExplain{font-size:10px;padding:8px;margin-top:13px;width:100%;text-align:left;background:#17312b6b}.lab-stage-note{position:absolute;left:50%;transform:translateX(-50%);bottom:245px;width:90%;display:flex;flex-direction:column;gap:4px;align-items:center;font:10px ui-monospace,monospace;color:#c4ded4;text-shadow:0 2px 4px #000}.lab-stage-note span+span{font:9px system-ui;color:#839f9a}.probe-marker{position:absolute;transform:translate(-50%,-50%);color:#e7cd81;pointer-events:none!important;z-index:1}.probe-marker i{display:block;width:12px;height:12px;border:2px solid #f5db94;box-shadow:0 0 0 3px #06131b99;border-radius:50%}.probe-marker.inside i{background:#ecd592}.probe-marker span{position:absolute;left:19px;top:1px;white-space:nowrap;font:8px ui-monospace,monospace;color:#edda9c;background:#07171ac4;padding:2px 4px;border-radius:3px}.axis-label{position:absolute;font:10px ui-monospace,monospace;color:#adcbc4;transform:translate(-50%,-50%);pointer-events:none!important}.lab-transport{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:min(880px,calc(100% - 68px));background:#071920f2;border:1px solid #79b6a947;border-radius:13px;box-shadow:0 12px 70px #0006;padding:17px 22px;display:grid;grid-template-columns:140px 1fr;column-gap:24px;pointer-events:auto}.w-position .eyebrow{font-size:8px;letter-spacing:1.5px}.w-position output{font:32px ui-monospace,monospace;color:var(--mint);display:block;line-height:1.5}.w-position>span:last-child{display:block;color:#94b3a8;font:8px ui-monospace,monospace}.w-track{align-self:center}.track-endpoints{display:flex;justify-content:space-between;gap:10px;color:#8caaa1;font:8px ui-monospace,monospace}#wSlider{width:100%;margin:12px 0 5px;accent-color:var(--mint);cursor:ew-resize;height:20px}.lab-landmarks{display:flex;justify-content:space-between;gap:5px}.lab-landmarks button{border:0;background:transparent;padding:2px;color:#94b3a8;font-size:9px}.lab-landmarks button:hover{color:var(--mint)}.transport-buttons{grid-column:1/-1;display:flex;gap:7px;justify-content:center;align-items:center;margin-top:17px}.transport-buttons button{font-size:11px;padding:8px 13px;min-height:36px}.transport-buttons button[aria-pressed=true]{background:#244b42;border-color:#a5f5db99}#wPlay{min-width:102px;background:#a5f5db;color:#06211f;font-weight:600}#wPlay kbd{border-color:#315c5055;color:#184739}.speed-label{display:flex;gap:6px;align-items:center;color:#90b3a8;font-size:9px;margin-left:9px}.speed-label select{background:#102a2a;color:#cce4dc;border:1px solid #7ba99644;border-radius:5px;padding:7px;font-size:10px}.lab-footer{display:flex;grid-column:1/-1;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #7fae9f25;margin-top:14px;padding-top:11px}.lab-footer button{padding:0;background:none;border:0;border-radius:0;font-size:10px;color:#bcd9cc}.lab-footer span{font-size:9px;color:#789a8e}.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media(max-width:1100px){.lab-heading{max-width:310px}.lab-heading h1{font-size:25px}.lab-readout{width:225px}.lab-heading p{max-width:260px}.lab-readout .eyebrow{font-size:7px}.lab-readout{padding:14px}.lab-state{font-size:17px}}
+@media(max-width:760px),(pointer:coarse){.lab-heading{top:81px;left:18px;right:18px;max-width:none}.lab-heading .eyebrow{font-size:8px;letter-spacing:1.5px}.lab-heading h1{font-size:23px;margin:7px 0;letter-spacing:-.6px}.lab-heading p{display:none}.specimen-tabs{margin-top:11px;gap:6px}.specimen-tabs button{font-size:10px;padding:7px 12px;min-height:36px}.lab-readout{top:190px;left:18px;right:18px;width:auto;border:0;background:transparent;padding:0;pointer-events:none}.lab-readout .eyebrow,.lab-readout>p{display:none}.lab-state{font-size:13px;margin:0 0 7px}.lab-metrics{display:flex;gap:18px;margin:0}.lab-metrics div{padding:0;border:0;gap:7px}.lab-metrics dt,.lab-metrics dd{font-size:8px}#probeDetails{position:absolute;top:0;right:0;max-width:49%;pointer-events:auto;background:#091b21e8;border-radius:7px;padding:5px 7px}#probeDetails summary{font-size:9px}#probeDetails p{font-size:10px}#probeDetails[open]{z-index:3;max-width:240px;padding:12px;border:1px solid var(--line)}.probe-state{font-size:8px;margin-top:8px}#labExplain{width:auto;margin-top:7px;padding:5px 8px;font-size:9px;pointer-events:auto;background:#17312be8}.probe-inputs input{width:42px}.lab-transport{bottom:12px;width:calc(100% - 24px);padding:13px 13px 10px;grid-template-columns:100px 1fr;column-gap:13px}.w-position output{font-size:25px}.w-position .eyebrow{font-size:7px;letter-spacing:.6px}.w-position>span:last-child{font-size:7px}.track-endpoints{font-size:7px}.track-endpoints span:nth-child(2){display:none}.lab-landmarks{gap:2px}.lab-landmarks button{font-size:8px;min-height:28px;max-width:48px;padding:1px}.transport-buttons{margin-top:12px;gap:5px;flex-wrap:wrap}.transport-buttons button{font-size:10px;padding:9px 11px;min-height:38px}.transport-buttons kbd{display:none}#wPlay{min-width:63px}.speed-label{margin:3px 0 0;font-size:8px}.speed-label select{font-size:9px;padding:7px 3px}.lab-footer{margin-top:10px;padding-top:10px}.lab-footer button{font-size:9px;min-height:28px}.lab-footer span{display:none}.lab-stage-note{bottom:244px;font-size:9px}.lab-stage-note span+span{font-size:8px}.probe-marker span{font-size:7px}.axis-label{font-size:9px}.lab-entry{font-size:11px;padding:9px 14px}.landing-meta{margin-top:15px}.landing-note{margin-top:18px}}
+@media(max-height:720px) and (max-width:760px){.lab-heading{top:72px}.lab-heading h1{font-size:20px}.specimen-tabs{margin-top:6px}.lab-readout{top:170px}.lab-state{font-size:11px}.lab-metrics{gap:12px}#labExplain{margin-top:4px}.lab-stage-note{bottom:214px}.lab-transport{padding-top:10px;bottom:7px}.transport-buttons{margin-top:6px}.transport-buttons button{min-height:34px;padding:7px 10px}.lab-footer{margin-top:7px;padding-top:6px}.lab-landmarks button{min-height:23px}#wSlider{margin:5px 0 0}.w-position output{font-size:23px}.speed-label{margin:0}.landing{top:18%}.landing h1{font-size:60px}.landing-note{display:none}}
+@media(max-height:550px){.lab-heading{top:70px;left:18px;max-width:240px}.lab-heading h1{font-size:19px}.lab-heading p{display:none}.specimen-tabs{margin-top:8px}.lab-readout{top:80px;left:auto;right:18px;width:200px;padding:9px}.lab-readout>p,.lab-readout .eyebrow,.lab-metrics,#probeDetails{display:none}.lab-state{font-size:12px}#labExplain{margin-top:5px}.lab-transport{bottom:6px;padding:8px 15px;width:min(650px,calc(100% - 30px));grid-template-columns:95px 1fr}.w-position output{font-size:22px}.w-position>span:last-child{display:none}.lab-landmarks button{min-height:18px}.transport-buttons{margin-top:5px;gap:6px}.transport-buttons button{min-height:30px;padding:5px 11px}.lab-footer{margin-top:7px;padding-top:5px}.lab-footer button{min-height:20px}.lab-stage-note{bottom:179px}.lab-stage-note span+span{display:none}}
+
+#labMoment{font-size:10px;padding:8px;margin-top:13px;width:100%;text-align:left;background:#1d2b3566;border-color:#9bacce55}#labExplain{margin-top:6px}.tangent-marker{position:absolute;transform:translate(-50%,-50%);pointer-events:none!important;z-index:1}.tangent-marker i{display:block;width:7px;height:7px;border-radius:50%;background:#def5eb;box-shadow:0 0 0 3px #07171baa}.tangent-marker span{position:absolute;left:14px;top:-8px;white-space:nowrap;font:8px/1.6 ui-monospace,monospace;color:#d3e7de;background:#07171ad9;padding:4px 6px;border-radius:4px}.tangent-marker small{font-size:7px;color:#88b3a0}@media(max-width:760px),(pointer:coarse){#labMoment,#labExplain{font-size:8px;width:auto;padding:5px 7px;margin-top:7px}#labExplain{margin-left:4px}}
+
+.tangent-marker span{left:-14px;transform:translateX(-100%);text-align:right}
+</style></head><body>
+<canvas id="world" aria-label="First-person three-dimensional slice of the four-dimensional maze"></canvas><div class="vignette"></div>
+<header><a class="wordmark" href="#" aria-label="Fourth Space home" id="home"><span class="mark">◇</span> FOURTH SPACE <small>IMMERSIVE / 03</small></a><div class="top-actions"><button id="guide">How to play <kbd>?</kbd></button><button id="settings">Comfort</button><button id="menu">Expeditions <span>☰</span></button></div></header>
+<div id="hud" hidden><section class="mission"><div class="eyebrow" id="chapter"></div><h1 id="levelName"></h1><p id="missionText"></p><div class="stats"><span><b id="moves">0</b> steps</span><span><b id="visited">1</b> rooms found</span></div></section>
+<section class="phase"><div class="eyebrow">FOURTH COORDINATE</div><div class="phase-value">W <span id="phaseValue">0</span><small id="phaseName">LIMINAL</small></div><div id="phaseTrack"></div><div class="phase-buttons"><button data-axis="3,-1" aria-label="Move W minus (Q)">W − <kbd>Q</kbd></button><button data-axis="3,1" aria-label="Move W plus (E)">W + <kbd>E</kbd></button></div><p id="phaseCue"></p><div class="coordinate" id="coordinates"></div></section>
+<div class="reticle" aria-hidden="true"><i></i></div><div id="transitionLabel" aria-hidden="true"></div>
+<div class="feedback"><div id="status" role="status" aria-live="polite">Find the passage beyond the visible.</div><div id="directionInfo"></div></div>
+<div class="bottom"><div class="bottom-actions"><button id="atlas">Atlas <kbd>M</kbd></button><button id="hint">Hint <kbd>H</kbd></button><button id="undo">Retrace <kbd>⌫</kbd></button></div><p class="desktop-help"><kbd>W A S D</kbd> step · drag to look · <kbd>J L</kbd> turn · <kbd>R F</kbd> rise / descend · <kbd>Q E</kbd> fourth axis</p></div>
+<div class="touch-controls"><div class="dpad"><button data-move="left" aria-label="Step left">←</button><button data-move="forward" aria-label="Step forward">↑</button><button data-move="right" aria-label="Step right">→</button><button data-turn="-1" aria-label="Turn left">↶</button><button data-move="back" aria-label="Step backward">↓</button><button data-turn="1" aria-label="Turn right">↷</button></div><div class="axis-controls"><button data-axis="2,1">Z ↑</button><button data-axis="3,1">W +</button><button data-axis="2,-1">Z ↓</button><button data-axis="3,-1">W −</button></div></div></div>
+<section class="landing" id="landing"><div class="eyebrow">A SPATIAL EXPEDITION</div><h1>Beyond<br>the <em>visible.</em></h1><p>There is another way around the wall.<br>It just isn’t in this room’s three dimensions.</p><button class="primary" id="enter">Enter Fourth Space <span>↗</span></button><button class="lab-entry" id="enterLab">Explore continuous W <span>NEW · SLICE LAB ↗</span></button><div class="landing-meta"><span>4 spatial axes</span><i></i><span>1 new direction</span><i></i><span>Entirely offline</span></div><div class="landing-note">A first-person 3D window into a 4D maze.<br>Start small. Learn to move somewhere new.</div></section>
+<section id="lab" hidden aria-label="Continuous fourth-dimension exploration">
+ <div class="lab-heading"><div class="eyebrow">CONTINUOUS W / SLICE LAB</div><h1 id="labTitle">One object. Many cross-sections.</h1><p id="labSubtitle">You change where you are along W. The object itself stays still.</p><div class="specimen-tabs" role="group" aria-label="Choose a four-dimensional object"><button data-specimen="ball">01 · Ball</button><button data-specimen="tesseract">02 · Cube</button><button data-specimen="torus">03 · Loop</button></div></div>
+ <aside class="lab-readout"><div class="eyebrow">WHAT THIS XYZ SLICE CONTAINS</div><div class="lab-state" id="labState"></div><p id="labSummary"></p><dl class="lab-metrics"><div><dt>Pieces in this slice</dt><dd id="labComponents"></dd></div><div><dt>XYZ spans</dt><dd id="labSpans"></dd></div></dl><details id="probeDetails"><summary>A fixed XYZ point</summary><p>This gold marker stays at the same XYZ coordinates as W changes. It is drawn through the object so you can track it.</p><div class="probe-inputs"><label>X<input id="probeX" type="number" value="1.6" min="-5" max="5" step="0.1"></label><label>Y<input id="probeY" type="number" value="0" min="-5" max="5" step="0.1"></label><label>Z<input id="probeZ" type="number" value="0" min="-5" max="5" step="0.1"></label></div></details><div id="probeState" class="probe-state"></div><button id="labMoment">Inspect first contact</button><button id="labExplain">Understand this change ↗</button></aside>
+ <div id="tangentMarker" class="tangent-marker" hidden aria-hidden="true"><i></i><span>ONE POINT · ZERO VOLUME<br><small>display marker, not a sphere</small></span></div><div id="probeMarker" class="probe-marker" aria-hidden="true"><i></i><span>FIXED XYZ</span></div><div class="axis-label" id="axisX" aria-hidden="true">X</div><div class="axis-label" id="axisY" aria-hidden="true">Y</div><div class="axis-label" id="axisZ" aria-hidden="true">Z</div>
+ <div class="lab-stage-note"><span id="labMotion">Paused · W is a place, not time.</span><span>Drag to orbit · scroll to zoom</span></div>
+ <section class="lab-transport" aria-label="Continuous W movement"><div class="w-position"><span class="eyebrow">YOUR W POSITION</span><output id="labW" for="wSlider">0.000</output><span id="labDirection">XYZ coordinates stay fixed</span></div><div class="w-track"><div class="track-endpoints"><span id="wMin"></span><span>same static 4D object</span><span id="wMax"></span></div><input id="wSlider" type="range" min="-3" max="3" value="0" step="0.001" aria-label="W position"><div id="labLandmarks" class="lab-landmarks"></div></div><div class="transport-buttons"><button id="wBackward" aria-label="Move toward decreasing W">−W <kbd>Q</kbd></button><button id="wPlay" aria-label="Play continuous W movement">Play <kbd>Space</kbd></button><button id="wForward" aria-label="Move toward increasing W">+W <kbd>E</kbd></button><button id="wReverse">Reverse ↔</button><label class="speed-label">Speed<select id="wSpeed" aria-label="W travel speed"><option value="0.3">Slow</option><option value="0.65" selected>Steady</option><option value="1.2">Quick</option></select></label></div><div class="lab-footer"><button id="labHome">Return to maze</button><span>No fading. Every shape comes from the same equation.</span><button id="labGuide">Why this is 4D</button></div></section>
+ <p id="labAnnouncement" class="sr-only" role="status" aria-live="polite"></p>
+</section>
+<div id="fatal" hidden role="alert"><h1>3D rendering unavailable</h1><p>This game needs WebGL. Try a current Chrome, Edge, Firefox or Safari browser with hardware acceleration enabled.</p></div>
+<dialog id="panel"><div class="dialog-head"><span id="panelEyebrow">FOURTH SPACE</span><button id="close" aria-label="Close panel">Close ×</button></div><div id="panelBody"></div></dialog>
+<script>/* Fourth Space: a finite, orthogonal four-dimensional cell complex. */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.FourthSpace = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const AXES = ['X', 'Y', 'Z', 'W'];
+  const key = p => p.join(',');
+  const edgeKey = (a,b) => [key(a),key(b)].sort().join('|');
+  const point = k => k.split(',').map(Number);
+  const same = (a, b) => a.every((v, i) => v === b[i]);
+  function delta(a, b) {
+    const diff = b.map((v, i) => v - a[i]);
+    if (diff.reduce((n, v) => n + Math.abs(v), 0) !== 1) return null;
+    const axis = diff.findIndex(v => v !== 0);
+    return { axis, sign: diff[axis] };
+  }
+  function makeGraph(dims) { return { dims: [...dims], cells: new Map(), edges: new Map() }; }
+  function addCell(g, p) {
+    if (p.length !== 4 || p.some((v, i) => !Number.isInteger(v) || v < 0 || v >= g.dims[i])) throw Error('Cell outside four-dimensional bounds');
+    const k = key(p);
+    if (!g.cells.has(k)) { g.cells.set(k, [...p]); g.edges.set(k, new Set()); }
+  }
+  function connect(g, a, b) {
+    if (!delta(a, b)) throw Error('A passage must change exactly one coordinate by one');
+    addCell(g, a); addCell(g, b);
+    g.edges.get(key(a)).add(key(b)); g.edges.get(key(b)).add(key(a));
+  }
+  function addPath(g, path) { path.forEach(p => addCell(g, p)); for (let i = 1; i < path.length; i++) connect(g, path[i - 1], path[i]); }
+  function next(g, p, axis, sign) {
+    if (!Number.isInteger(axis) || axis < 0 || axis > 3 || (sign !== 1 && sign !== -1)) return null;
+    const q = [...p]; q[axis] += sign;
+    return g.edges.get(key(p))?.has(key(q)) ? q : null;
+  }
+  function shortest(g, start, goal, bannedAxis = -1) {
+    if (!g.cells.has(key(start)) || !g.cells.has(key(goal))) return null;
+    const queue = [key(start)], previous = new Map([[key(start), null]]);
+    for (let i = 0; i < queue.length; i++) {
+      const k = queue[i]; if (k === key(goal)) break;
+      for (const n of g.edges.get(k)) {
+        if (previous.has(n) || delta(point(k), point(n)).axis === bannedAxis) continue;
+        previous.set(n, k); queue.push(n);
+      }
+    }
+    if (!previous.has(key(goal))) return null;
+    const path = []; let cursor = key(goal);
+    while (cursor !== null) { path.push(point(cursor)); cursor = previous.get(cursor); }
+    return path.reverse();
+  }
+  function rng(seed) { let a = seed >>> 0; return function () { a += 0x6D2B79F5; let t = a; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function generated(seed, dims = [4, 4, 3, 3]) {
+    const g = makeGraph(dims), random = rng(seed), start = [0, 0, 0, 0];
+    addCell(g, start); const stack = [start];
+    while (stack.length) {
+      const p = stack[stack.length - 1], options = [];
+      for (let axis = 0; axis < 4; axis++) for (const sign of [-1, 1]) {
+        const q = [...p]; q[axis] += sign;
+        if (q[axis] >= 0 && q[axis] < dims[axis] && !g.cells.has(key(q))) options.push(q);
+      }
+      if (!options.length) { stack.pop(); continue; }
+      const q = options[Math.floor(random() * options.length)]; connect(g, p, q); stack.push(q);
+    }
+    // A perfect 4D maze: connected, no cycles, one route between any two cells.
+    const candidates = [...g.cells.values()].filter(p => p[3] === 0 && p[2] > 0 && p[0] > 0 && p[1] > 0);
+    let goal = start, distance = -1;
+    for (const p of candidates) {
+      const path = shortest(g, start, p), used = new Set(path.slice(1).map((q, i) => delta(path[i], q).axis));
+      if (used.size === 4 && path.length > distance) { goal = p; distance = path.length; }
+    }
+    return { ...g, start, goal: [...goal], seed };
+  }
+  function level(id, seed = 2048) {
+    if (id === 0) {
+      const g = makeGraph([5, 3, 1, 2]);
+      addPath(g, [[0,1,0,0],[1,1,0,0],[1,1,0,1],[2,1,0,1],[3,1,0,1],[3,1,0,0],[4,1,0,0]]);
+      addPath(g, [[0,1,0,0],[0,2,0,0],[1,2,0,0]]);
+      addPath(g, [[2,1,0,1],[2,0,0,1]]);
+      return { ...g, start:[0,1,0,0], goal:[4,1,0,0], title:'Beyond the wall', subtitle:'Meet a new direction', lesson:'A wall blocks the X route. Step along W, walk around its edge, then return to W = 0.', insight:'You went around a wall in a direction that does not exist in XYZ space. W was a spatial step, not time or teleportation.' };
+    }
+    if (id === 1) {
+      const g = makeGraph([4, 3, 3, 3]);
+      addPath(g, [[0,0,0,0],[1,0,0,0],[1,1,0,0],[1,1,1,0],[1,1,1,1],[2,1,1,1],[2,1,1,2],[2,2,1,2],[2,2,2,2],[3,2,2,2],[3,2,2,1],[3,2,2,0]]);
+      addPath(g, [[1,1,1,0],[0,1,1,0],[0,2,1,0]]);
+      addPath(g, [[2,1,1,1],[2,0,1,1],[3,0,1,1]]);
+      addPath(g, [[2,2,1,2],[1,2,1,2]]);
+      return { ...g, start:[0,0,0,0], goal:[3,2,2,0], title:'Four directions', subtitle:'Use every spatial axis', lesson:'Now Z has room to move, too. Use Z to change height and W to move perpendicular to all three familiar axes.', insight:'Z and W are independent. Moving in W preserved X, Y and Z; moving in Z preserved X, Y and W.' };
+    }
+    if (id === 2) {
+      const g = generated(seed);
+      return { ...g, title:'The hypermaze', subtitle:'Find your own route', lesson:'A seeded maze spanning all four axes. Follow passages, use other planes when they help, and ask for one step if you get stuck.', insight:'You navigated a connected four-dimensional maze. Try a different seed, or reduce visual assistance and build a mental map.' };
+    }
+    const g = makeGraph([3,3,3,3]);
+    for (let x=0;x<3;x++) for(let y=0;y<3;y++) for(let z=0;z<3;z++) for(let w=0;w<3;w++) addCell(g,[x,y,z,w]);
+    for(const p of g.cells.values()) for(let a=0;a<4;a++) { const q=[...p]; q[a]++; if(q[a]<3) connect(g,p,q); }
+    return { ...g, start:[1,1,1,1], goal:null, title:'Open space', subtitle:'Explore without walls', lesson:'Eight possible directions at each interior cell: ±X, ±Y, ±Z and ±W. Switch planes and notice that W behaves just like another spatial axis.', insight:'' };
+  }
+  function rotate4(p, axisA, axisB, radians) {
+    const q = [...p], c = Math.cos(radians), s = Math.sin(radians);
+    q[axisA] = p[axisA]*c - p[axisB]*s;
+    q[axisB] = p[axisA]*s + p[axisB]*c; return q;
+  }
+  return { AXES, key, edgeKey, point, same, delta, makeGraph, addCell, connect, addPath, next, shortest, rng, generated, level, rotate4 };
+});
+</script><script>(function(root,factory){const a=factory();if(typeof module==='object'&&module.exports)module.exports=a;else root.SpaceNav=a;})(typeof globalThis!=='undefined'?globalThis:this,()=>{
+ const TAU=Math.PI*2;
+ function heading(yaw){const h=((Math.round(yaw/(Math.PI/2))%4)+4)%4;return [[1,1],[0,1],[1,-1],[0,-1]][h];}
+ function relative(yaw,dir){const [a,s]=heading(yaw);if(dir==='back')return [a,-s];if(dir==='left')return [1-a,a===0?s:-s];if(dir==='right')return [1-a,a===0?-s:s];return [a,s];}
+ const world=p=>[p[0]*8,p[2]*8,p[1]*8];
+ const ease=t=>t*t*(3-2*t);
+ function blockedFeedback(axis,sign,oppositeAvailable){
+  const name=['X','Y','Z','W'][axis],requested=name+(sign>0?'+':'−'),other=name+(sign>0?'−':'+');
+  if(axis===3){if(oppositeAvailable)return `${requested} is closed here. ${other} is open: press ${sign>0?'Q':'E'} or click ${other}.`;return `No ${requested} passage here. This room has no W exits.`;}
+  if(axis===2){if(oppositeAvailable)return `${requested} is closed here. ${other} is open: press ${sign>0?'F':'R'}.`;return 'No vertical passage here. Look for a violet hatch.';}
+  return 'A wall blocks that direction. Turn, retrace, or try another axis.';
+ }
+ return {TAU,heading,relative,world,ease,blockedFeedback};
+});
+</script><script>/* A tiny dependency-free WebGL renderer. No remote scripts, assets or shaders. */
+class SpaceRenderer {
+ constructor(canvas){
+  this.canvas=canvas;const gl=this.gl=canvas.getContext('webgl',{antialias:true,alpha:false,powerPreference:'high-performance'});if(!gl){this.ctx=canvas.getContext('2d',{alpha:false});if(!this.ctx)throw Error('Canvas unavailable');this.count=0;return;}
+  const compile=(type,src)=>{const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;};
+  const vs=compile(gl.VERTEX_SHADER,`attribute vec3 aPos;attribute vec3 aColor;uniform vec3 uEye;uniform float uYaw;uniform float uPitch;uniform float uAspect;varying mediump vec3 vColor;varying mediump float vDist;void main(){vec3 d=aPos-uEye;float x=cos(uYaw)*d.x-sin(uYaw)*d.z;float f=sin(uYaw)*d.x+cos(uYaw)*d.z;float y=cos(uPitch)*d.y-sin(uPitch)*f;float z=-(sin(uPitch)*d.y+cos(uPitch)*f);float near=.08;float far=110.;gl_Position=vec4(x*1.35/uAspect,y*1.35,(far+near)/(near-far)*z+2.*far*near/(near-far),-z);vColor=aColor;vDist=length(d);}`);
+  const fs=compile(gl.FRAGMENT_SHADER,`precision mediump float;varying mediump vec3 vColor;varying mediump float vDist;uniform vec3 uFog;uniform float uDim;void main(){float fog=1.-exp(-vDist*vDist*.00045);vec3 col=mix(vColor,uFog,clamp(fog,0.,.98));gl_FragColor=vec4(col*uDim,1.);}`);
+  this.program=gl.createProgram();gl.attachShader(this.program,vs);gl.attachShader(this.program,fs);gl.linkProgram(this.program);if(!gl.getProgramParameter(this.program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(this.program));gl.useProgram(this.program);
+  this.buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);for(const [name,offset] of [['aPos',0],['aColor',12]]){const a=gl.getAttribLocation(this.program,name);gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,3,gl.FLOAT,false,24,offset);}
+  this.u={};for(const n of ['Eye','Yaw','Pitch','Aspect','Fog','Dim'])this.u[n]=gl.getUniformLocation(this.program,'u'+n);gl.enable(gl.DEPTH_TEST);this.count=0;
+ }
+ box(x,y,z,sx,sy,sz,col){
+  const v=[[x-sx/2,y-sy/2,z-sz/2],[x+sx/2,y-sy/2,z-sz/2],[x+sx/2,y+sy/2,z-sz/2],[x-sx/2,y+sy/2,z-sz/2],[x-sx/2,y-sy/2,z+sz/2],[x+sx/2,y-sy/2,z+sz/2],[x+sx/2,y+sy/2,z+sz/2],[x-sx/2,y+sy/2,z+sz/2]];
+  const faces=[[0,1,2,3,.65],[4,7,6,5,.85],[0,4,5,1,.48],[3,2,6,7,1],[0,3,7,4,.73],[1,5,6,2,.9]];
+  for(const [a,b,c,d,l] of faces){this.faces.push({v:[v[a],v[b],v[c],v[d]],c:col.map(n=>n*l)});for(const i of [a,b,c,a,c,d])this.data.push(...v[i],...col.map(n=>n*l));}
+ }
+ build(g,w,visited,trail,hint){
+  const F=FourthSpace;this.data=[];this.faces=[];const palette=[[.24,.55,.52],[.47,.35,.68],[.67,.45,.25]];this.accent=palette[w%palette.length];
+  for(const p of g.cells.values()){
+   if(p[3]!==w)continue;const [x,y,z]=SpaceNav.world(p);const seen=visited.has(F.key(p));const accent=this.accent;
+   const slab=(yy,color,open)=>{if(!open)this.box(x,yy,z,8,.2,8,color);else{for(const s of [-1,1]){this.box(x+s*2.65,yy,z,2.7,.2,8,color);this.box(x,yy,z+s*2.65,2.6,.2,2.7,color);}}};
+   slab(y-3.18,[.13,.19,.22],!!F.next(g,p,2,-1));slab(y+3.9,[.10,.15,.19],!!F.next(g,p,2,1));
+   for(let i=-3;i<=3;i+=2){this.box(x+i,y-3.04,z,.025,.02,8,[.24,.31,.32]);this.box(x,y-3.04,z+i,8,.02,.025,[.24,.31,.32]);}
+   // All six ordinary room faces match graph adjacency. Doors are real gaps.
+   for(const axis of [0,1])for(const sign of [-1,1]){
+    const open=!!F.next(g,p,axis,sign), wx=x+(axis===0?sign*4:0),wz=z+(axis===1?sign*4:0);
+    const wall=(along,height,centerY,offset,color,thickness=.22)=>this.box(wx+(axis===1?offset:0),y+centerY,wz+(axis===0?offset:0),axis===0?thickness:along,height,axis===0?along:thickness,color);
+    if(open){for(const side of [-1,1])wall(2.65,6.8,.4,side*2.675,[.19,.25,.29]);wall(2.7,2.3,2.65,0,[.18,.24,.28]);for(const side of [-1,1])wall(.07,4.5,-.75,side*1.37,accent.map(n=>n*1.6),.28);wall(2.8,.07,1.52,0,accent.map(n=>n*1.6),.28);}
+    else{wall(8,6.8,.4,0,[.16,.22,.27]);wall(5,3.3,.15,0,[.20,.28,.32],.27);wall(5.1,.025,-1.55,0,accent,.29);wall(.025,3.5,.15,0,accent,.29);}
+   }
+   for(const a of [-3.8,3.8])for(const b of [-3.8,3.8])this.box(x+a,y+.3,z+b,.25,6.7,.25,[.25,.35,.36]);
+   // Ambient ceiling luminaires and a small floor compass.
+   this.box(x,y+3.77,z,1.9,.05,.38,[.74,.9,.83]);this.box(x,y-3.015,z,.06,.035,1.8,[.28,.48,.46]);this.box(x,y-3.015,z,1.8,.035,.06,[.28,.48,.46]);
+   if(trail&&seen){this.box(x,y-2.99,z,.42,.045,.42,[.38,.72,.62]);}
+   const wm=F.next(g,p,3,-1),wp=F.next(g,p,3,1);
+   if(wm||wp){ // W is not a doorway in a wall. A central pad signals an orthogonal exit.
+    this.box(x,y-2.96,z,1.35,.08,1.35,accent.map(n=>n*1.6));this.box(x,y-2.90,z,1.1,.055,1.1,[.06,.14,.18]);
+    for(const s of [-1,1])this.box(x+s*.58,y-2.83,z,.04,.18,1.2,accent.map(n=>n*1.8));
+   }
+   for(const sign of [-1,1])if(F.next(g,p,2,sign)){
+    const yy=y+(sign>0?3.74:-2.88);for(const o of [-1,1]){this.box(x+o*1.02,yy+.05,z,.05,.08,2.1,[.63,.66,.95]);this.box(x,yy+.05,z+o*1.02,2.1,.08,.05,[.63,.66,.95]);}
+   }
+   if(g.goal&&F.same(p,g.goal)){this.box(x,y-2.4,z,.85,1.2,.85,[.7,.48,.20]);this.box(x,y-.9,z,.55,.55,.55,[1,.76,.35]);this.box(x,y-2.98,z,2,.04,2,[.69,.49,.18]);}
+   if(hint&&F.same(p,hint))this.box(x,y-1.6,z,.2,1.8,.2,[.75,1,.85]);
+  }
+  if(!this.gl)return;const gl=this.gl;gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(this.data),gl.STATIC_DRAW);this.count=this.data.length/6;
+ }
+ buildSlice(slice,sceneId){
+  this.data=[];this.faces=[];
+  // The grid and axes are a stationary XYZ reference, not part of the 4D body.
+  this.box(0,-3.15,0,18,.035,18,[.045,.085,.11]);
+  for(let i=-8;i<=8;i++){
+   this.box(i,-3.12,0,.012,.012,18,[.10,.18,.20]);
+   this.box(0,-3.12,i,18,.012,.012,[.10,.18,.20]);
+  }
+  this.box(0,-3.09,0,8,.018,.025,[.48,.28,.23]);
+  this.box(0,-3.09,0,.025,.018,8,[.24,.47,.43]);
+  this.box(-4,-.8,-4,.025,4.6,.025,[.43,.36,.65]);
+  const base={ball:[.40,.83,.72],tesseract:[.62,.57,.90],torus:[.93,.65,.32]}[sceneId];
+  const vertices=slice.vertices.map(p=>[p[0],p[2],p[1]]);
+  for(const face of slice.faces){
+   const v=face.map(i=>vertices[i]);if(v.length<3)continue;
+   const a=v[1].map((n,i)=>n-v[0][i]),b=v[2].map((n,i)=>n-v[0][i]);
+   const n=[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],len=Math.hypot(...n);
+   if(len<1e-12)continue;
+   // Coordinate permutation reverses winding; the minus restores the outward normal.
+   const light=.57+.40*Math.max(0,-(n[0]*-.45+n[1]*.8+n[2]*-.4)/len);
+   const color=base.map(c=>c*light);this.faces.push({v,c:color});
+   for(let i=1;i<v.length-1;i++)for(const p of [v[0],v[i],v[i+1]])this.data.push(...p,...color);
+  }
+  if(this.gl){const gl=this.gl;gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(this.data),gl.DYNAMIC_DRAW);this.count=this.data.length/6;}
+ }
+ draw(eye,yaw,pitch,dim=1){if(!this.gl){this.software(eye,yaw,pitch,dim);return;}const gl=this.gl;const ratio=Math.min(devicePixelRatio||1,1.7);const w=Math.round(innerWidth*ratio),h=Math.round(innerHeight*ratio);if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}gl.viewport(0,0,w,h);gl.clearColor(.025,.055,.078,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniform3fv(this.u.Eye,eye);gl.uniform1f(this.u.Yaw,yaw);gl.uniform1f(this.u.Pitch,pitch);gl.uniform1f(this.u.Aspect,w/h);gl.uniform3f(this.u.Fog,.025,.055,.078);gl.uniform1f(this.u.Dim,dim);gl.drawArrays(gl.TRIANGLES,0,this.count);}
+ software(eye,yaw,pitch,dim){
+  const ctx=this.ctx,ratio=Math.min(devicePixelRatio||1,1.2),width=Math.round(innerWidth*ratio),height=Math.round(innerHeight*ratio);
+  if(this.canvas.width!==width||this.canvas.height!==height){this.canvas.width=width;this.canvas.height=height;}ctx.fillStyle='#061419';ctx.fillRect(0,0,width,height);
+  const sy=Math.sin(yaw),cy=Math.cos(yaw),sp=Math.sin(pitch),cp=Math.cos(pitch),focal=height*.675,list=[];
+  for(const face of this.faces){let points=face.v.map(v=>{const dx=v[0]-eye[0],dy=v[1]-eye[1],dz=v[2]-eye[2],f=sy*dx+cy*dz;return [cy*dx-sy*dz,cp*dy-sp*f,sp*dy+cp*f];});
+   if(points.every(p=>p[2]<.08)||points.every(p=>p[2]>70))continue;
+   const clipped=[];for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length];if(a[2]>=.08)clipped.push(a);if((a[2]>=.08)!==(b[2]>=.08)){const t=(.08-a[2])/(b[2]-a[2]);clipped.push(a.map((n,k)=>n+t*(b[k]-n)));}}points=clipped;if(points.length<3)continue;
+   const depth=points.reduce((s,p)=>s+p[2],0)/points.length,screen=points.map(p=>[width/2+p[0]/p[2]*focal,height/2-p[1]/p[2]*focal]);if(screen.every(p=>p[0]<0)||screen.every(p=>p[0]>width)||screen.every(p=>p[1]<0)||screen.every(p=>p[1]>height))continue;
+   list.push({screen,depth,c:face.c});
+  }
+  list.sort((a,b)=>b.depth-a.depth);
+  for(const item of list){const fog=1-Math.exp(-item.depth*item.depth*.00045),c=item.c.map((n,i)=>Math.round(Math.min(1,(n*(1-fog)+[.025,.055,.078][i]*fog)*dim)*255));ctx.fillStyle=`rgb(${c.join(',')})`;ctx.beginPath();item.screen.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.fill();}
+ }
+}
+</script><script>/* Fixed 4D solids intersected with W = w. No animation, time or interpolation.
+ * UMD API: SpaceContinuous.scenes, slice(id,w), contains(id,[x,y,z],w),
+ * probe(id,[x,y,z],w), triangulate(faces), toWorld([x,y,z]).
+ * Vertices are mathematical [X,Y,Z]; renderer coordinates are [X,Z,Y].
+ * faces have outward mathematical winding (swap winding after toWorld).
+ * Curved meshes are tessellations of the exact boundary, not exact curved faces.
+ * metrics.volume is analytic 3D volume, not tessellation volume.
+ */
+(function(root,factory){
+  const api=factory();
+  if(typeof module==='object'&&module.exports) module.exports=api;
+  else root.SpaceContinuous=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const EPS=1e-10, R=2.7, H=1.65, ANGLE=Math.PI/6;
+  const C=Math.cos(ANGLE), S=Math.sin(ANGLE), MAJOR=2, TUBE=.85;
+  const scenes=Object.freeze([
+    Object.freeze({id:'ball',name:'4D ball',range:Object.freeze([-3.1,3.1]),support:Object.freeze([-R,R]),equation:'x² + y² + z² + w² ≤ 2.7²',description:'One fixed four-dimensional ball. Its XYZ slices grow from a point to a sphere, then shrink.'}),
+    Object.freeze({id:'tesseract',name:'Rotated tesseract',range:Object.freeze([-2.6,2.6]),support:Object.freeze([-H*(C+S),H*(C+S)]),equation:'|cx + sw| ≤ 1.65; |−sx + cw| ≤ 1.65; |y|, |z| ≤ 1.65',description:'A fixed 4D cube rotated 30° in XW. Here c = cos 30° and s = sin 30°. Its exact XYZ slices are boxes whose X bounds change.'}),
+    Object.freeze({id:'torus',name:'Connected 4D ring',range:Object.freeze([-3.2,3.2]),support:Object.freeze([-MAJOR-TUBE,MAJOR+TUBE]),equation:'(√(x² + w²) − 2)² + y² + z² ≤ 0.85²',description:'One connected solid tube around a circle in XW. A slice can have two separate volumes that meet and join as W changes.'})
+  ]);
+  function scene(id){const d=scenes.find(s=>s.id===id);if(!d)throw new RangeError('Unknown continuous scene: '+id);return d;}
+  function validate(w){if(!Number.isFinite(w))throw new TypeError('W must be finite');}
+  function signedValue(id,p,w){
+    scene(id);validate(w);
+    if(!Array.isArray(p)||p.length!==3||p.some(v=>!Number.isFinite(v)))throw new TypeError('Probe must be three finite XYZ coordinates');
+    const [x,y,z]=p;
+    if(id==='ball')return x*x+y*y+z*z+w*w-R*R;
+    if(id==='tesseract')return Math.max(Math.abs(C*x+S*w),Math.abs(-S*x+C*w),Math.abs(y),Math.abs(z))-H;
+    return (Math.hypot(x,w)-MAJOR)**2+y*y+z*z-TUBE*TUBE;
+  }
+  function contains(id,p,w){return signedValue(id,p,w)<=EPS;}
+  function probe(id,p,w){const value=signedValue(id,p,w);return {xyz:p.slice(),w,inside:value<=EPS,onBoundary:Math.abs(value)<=EPS,value,equation:scene(id).equation};}
+  function triangulate(faces){const triangles=[];for(const f of faces)for(let i=1;i<f.length-1;i++)triangles.push([f[0],f[i],f[i+1]]);return triangles;}
+  function toWorld(p){return [p[0],p[2],p[1]];}
+  // Surface of revolution about X. Endpoint poles are single vertices, no degenerate quads.
+  function revolution(mesh,lo,hi,radius,steps=48,sides=40){
+    let previous=null;
+    for(let j=0;j<=steps;j++){
+      // Cosine samples resolve tips well and place x=0 at the center of symmetric intervals.
+      const x=j===0?lo:j===steps?hi:lo+(hi-lo)*(1-Math.cos(Math.PI*j/steps))/2;
+      const r=radius(x),ring=[];
+      if(r<1e-7){
+        let index=mesh.vertices.findIndex(p=>Math.abs(p[0]-x)<EPS&&p[1]===0&&p[2]===0);
+        if(index<0){index=mesh.vertices.length;mesh.vertices.push([x,0,0]);}ring.push(index);
+      }else for(let k=0;k<sides;k++){ring.push(mesh.vertices.length);const a=2*Math.PI*k/sides;mesh.vertices.push([x,r*Math.cos(a),r*Math.sin(a)]);}
+      if(previous){
+        for(let k=0;k<sides;k++){
+          const n=(k+1)%sides;
+          if(previous.length===1&&ring.length>1)mesh.faces.push([previous[0],ring[n],ring[k]]);
+          else if(ring.length===1&&previous.length>1)mesh.faces.push([previous[k],previous[n],ring[0]]);
+          else if(previous.length>1&&ring.length>1)mesh.faces.push([previous[k],previous[n],ring[n],ring[k]]);
+        }
+      }
+      previous=ring;
+    }
+  }
+  function box(mesh,lo,hi){
+    mesh.vertices=[[lo,-H,-H],[hi,-H,-H],[hi,H,-H],[lo,H,-H],[lo,-H,H],[hi,-H,H],[hi,H,H],[lo,H,H]];
+    mesh.faces=[[0,3,2,1],[4,5,6,7],[0,1,5,4],[3,7,6,2],[0,4,7,3],[1,2,6,5]];
+  }
+  function torusIntegral(x,w){
+    const a=Math.abs(w);
+    const radial=a<EPS?x*Math.abs(x):x*Math.hypot(x,w)+w*w*Math.asinh(x/a);
+    return (TUBE*TUBE-MAJOR*MAJOR-w*w)*x-x*x*x/3+MAJOR*radial;
+  }
+  function slice(id,w){
+    const definition=scene(id);validate(w);
+    const out={sceneId:id,w,status:'absent',dimension:-1,vertices:[],faces:[],equation:definition.equation,summary:'No intersection at this W.',metrics:{components:0,volume:0,bounds:null,volumeMethod:'analytic',surfaceApproximation:id!=='tesseract'}};
+    if(id==='ball'){
+      const r2=R*R-w*w;if(r2 < -EPS)return out;
+      const radius=Math.sqrt(r2<=EPS?0:r2);out.metrics.radius=radius;
+      out.metrics.bounds={min:[-radius,-radius,-radius],max:[radius,radius,radius]};
+      out.metrics.components=1;out.dimension=radius<EPS?0:3;out.status=out.dimension===0?'tangent':'volume';
+      out.metrics.volume=4*Math.PI*radius**3/3;
+      if(out.dimension===0)out.vertices=[[0,0,0]];
+      else revolution(out,-radius,radius,x=>Math.sqrt(Math.max(0,r2-x*x)));
+      out.summary=out.status==='tangent'?'The slice touches the 4D ball at one point.':'One spherical volume. XYZ radius = √(2.7² − w²).';
+    }else if(id==='tesseract'){
+      const lo=Math.max((-H-S*w)/C,(C*w-H)/S),hi=Math.min((H-S*w)/C,(C*w+H)/S);
+      if(hi<lo-EPS)return out;
+      const width=hi-lo<=EPS?0:hi-lo;
+      out.metrics.bounds={min:[lo,-H,-H],max:[width===0?lo:hi,H,H]};out.metrics.components=1;out.metrics.xBounds=[lo,Math.max(lo,hi)];out.metrics.width=width;
+      out.metrics.volume=width*4*H*H;out.dimension=width<EPS?2:3;out.status=out.dimension===2?'tangent':'volume';
+      if(out.dimension===2){out.vertices=[[lo,-H,-H],[lo,H,-H],[lo,H,H],[lo,-H,H]];out.faces=[[0,1,2,3]];}
+      else box(out,lo,hi);
+      out.summary=out.dimension===2?'At the extreme W, only a square remains (zero 3D volume).':'An exact box: fixed Y/Z bounds; X bounds come from both rotated cube inequalities.';
+    }else{
+      const outer=(MAJOR+TUBE)**2-w*w;if(outer < -EPS)return out;
+      const high=Math.sqrt(outer<=EPS?0:outer),inner=(MAJOR-TUBE)**2-w*w;
+      const low=Math.sqrt(inner<=EPS?0:inner);
+      const maxRadius=high===0?0:Math.abs(w)<=MAJOR?TUBE:Math.sqrt(Math.max(0,TUBE*TUBE-(Math.abs(w)-MAJOR)**2));
+      out.metrics.bounds={min:[-high,-maxRadius,-maxRadius],max:[high,maxRadius,maxRadius]};
+      out.metrics.components=inner>EPS?2:1;out.metrics.touching=Math.abs(inner)<=EPS;out.metrics.neckRadius=Math.sqrt(Math.max(0,TUBE*TUBE-(Math.abs(w)-MAJOR)**2));
+      out.metrics.xIntervals=inner>EPS?[[-high,-low],[low,high]]:[[-high,high]];
+      out.dimension=high<EPS?0:3;out.status=out.dimension===0?'tangent':'volume';
+      out.metrics.volume=Math.max(0,2*Math.PI*(torusIntegral(high,w)-torusIntegral(low,w)));
+      if(out.dimension===0)out.vertices=[[0,0,0]];
+      else{
+        const radius=x=>Math.sqrt(Math.max(0,TUBE*TUBE-(Math.hypot(x,w)-MAJOR)**2));
+        // At the merger, two surfaces share their single origin vertex.
+        const intervals=inner>=-EPS?[[-high,-low],[low,high]]:[[-high,high]];
+        for(const [a,b] of intervals)revolution(out,a,b,radius);
+      }
+      out.summary=out.status==='tangent'?'The slice touches the ring at one point.':out.metrics.touching?'The two lobes meet at one point: one connected slice, zero-width neck.':out.metrics.components===2?'Two separate XYZ volumes belong to one connected 4D solid.':'The lobes are joined in this XYZ slice.';
+    }
+    return out;
+  }
+  return Object.freeze({scenes,slice,contains,probe,triangulate,toWorld});
+});
+</script><script>/* Continuous W lab. A specimen never changes with time: W selects its exact XYZ intersection. */
+class SpaceLab {
+ constructor(renderer, options){
+  this.renderer=renderer;this.options=options;this.active=false;this.sceneId='ball';this.w=-1.7;this.direction=1;this.playing=false;this.speed=.65;this.probe=[1.6,0,0];this.yaw=.38;this.elevation=.24;this.distance=12;this.dirty=true;this.lastTime=null;this.drag=null;this.held=new Set();
+  this.$=s=>document.querySelector(s);const $=this.$;
+  document.querySelectorAll('[data-specimen]').forEach(button=>button.onclick=()=>this.select(button.dataset.specimen));
+  $('#wSlider').oninput=e=>{this.pause();this.setW(Number(e.target.value));};
+  $('#wPlay').onclick=()=>this.toggle();$('#wBackward').onclick=()=>this.travel(-1);$('#wForward').onclick=()=>this.travel(1);
+  $('#wReverse').onclick=()=>{this.direction*=-1;this.updateMotion();this.announce(`Direction reversed. ${this.playing?'Travelling':'Paused, ready to travel'} toward ${this.direction>0?'increasing':'decreasing'} W.`);};
+  $('#wSpeed').onchange=e=>this.speed=Number(e.target.value);
+  $('#labMoment').onclick=()=>{this.pause();this.setW(this.sceneId==='torus'?1.15:this.scene.support[0]);};
+  $('#labHome').onclick=()=>this.options.exit();$('#labGuide').onclick=()=>this.guide();$('#labExplain').onclick=()=>this.explain();
+  for(const [i,id] of ['#probeX','#probeY','#probeZ'].entries())$(id).oninput=e=>{const value=Number(e.target.value);if(e.target.value===''||!Number.isFinite(value))return;this.probe[i]=Math.max(-5,Math.min(5,value));if(value!==this.probe[i])e.target.value=this.probe[i];this.updateProbe();this.dirty=true;};
+  for(const [i,id] of ['#probeX','#probeY','#probeZ'].entries())$(id).onblur=e=>{e.target.value=this.probe[i];};
+  const canvas=$('#world');canvas.addEventListener('pointerdown',e=>{if(!this.active||$('#panel').open)return;this.drag={id:e.pointerId,x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);});
+  canvas.addEventListener('pointermove',e=>{if(!this.active||!this.drag||this.drag.id!==e.pointerId)return;this.yaw-=(e.clientX-this.drag.x)*.006;this.elevation=Math.max(-.05,Math.min(1.1,this.elevation+(e.clientY-this.drag.y)*.004));this.drag.x=e.clientX;this.drag.y=e.clientY;this.dirty=true;});
+  for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,()=>this.drag=null);
+  canvas.addEventListener('wheel',e=>{if(!this.active||$('#panel').open)return;e.preventDefault();this.distance=Math.max(8,Math.min(22,this.distance+e.deltaY*.008));this.dirty=true;},{passive:false});
+  window.addEventListener('keydown',e=>this.keydown(e));window.addEventListener('keyup',e=>{const key=e.key.toLowerCase();if(this.held.delete(key)&&!this.held.size)this.pause();});
+  window.addEventListener('blur',()=>this.pause());document.addEventListener('visibilitychange',()=>{if(document.hidden)this.pause();});
+  window.addEventListener('resize',()=>this.dirty=true);
+ }
+ get scene(){return SpaceContinuous.scenes.find(s=>s.id===this.sceneId);}
+ enter(){this.active=true;this.pause();this.lastTime=null;document.body.classList.add('lab-mode');this.$('#lab').hidden=false;this.$('#world').setAttribute('aria-label','Three-dimensional cross-section of a static four-dimensional object. Drag to orbit.');this.select(this.sceneId,false);}
+ exit(){this.pause();this.active=false;this.drag=null;document.body.classList.remove('lab-mode');this.$('#lab').hidden=true;this.$('#world').setAttribute('aria-label','First-person three-dimensional slice of the four-dimensional maze');}
+ select(id,reset=true){if(!SpaceContinuous.scenes.some(s=>s.id===id))return;this.pause();this.sceneId=id;this.direction=1;const $=this.$;document.querySelectorAll('[data-specimen]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.specimen===id)));
+  $('#labMoment').textContent=id==='torus'?'Inspect the joining point':'Inspect first contact';
+  $('#labTitle').textContent={ball:'A ball, one slice at a time.',tesseract:'A cube tilted into W.',torus:'Two pieces. One object.'}[id];
+  $('#labSubtitle').textContent={ball:'Its 4D radius is fixed. Your W position sets the size you can see.',tesseract:'The solid is fixed at a 4D tilt. Only the cutting position moves.',torus:'A connected loop in XW can look disconnected inside one XYZ slice.'}[id];
+  const [min,max]=this.scene.range;$('#wSlider').min=min;$('#wSlider').max=max;$('#wMin').textContent=`W ${min.toFixed(2)}`;$('#wMax').textContent=`W +${max.toFixed(2)}`;
+  const landmarks={ball:[['Before',-3],['Small',-2.5],['Largest',0],['Small',2.5],['Beyond',3]],tesseract:[['Before',min],['Entering',min*.7],['Middle',0],['Leaving',max*.7],['Beyond',max]],torus:[['Before',min],['Joined',-2],['Two pieces',0],['Joined',2],['Beyond',max]]}[id];
+  $('#labLandmarks').replaceChildren(...landmarks.map(([label,w])=>{const button=document.createElement('button');button.textContent=label;button.title=`Set W to ${w.toFixed(3)}`;button.onclick=()=>{this.pause();this.setW(w);};return button;}));
+  this.setW(reset?{ball:-1.7,tesseract:-1,torus:0}[id]:this.w);this.announce(`${$('#labTitle').textContent} Paused. Use the W slider or press Play.`);
+ }
+ setW(value){if(!Number.isFinite(value))return;this.w=Math.max(this.scene.range[0],Math.min(this.scene.range[1],value));this.slice=SpaceContinuous.slice(this.sceneId,this.w);this.renderer.buildSlice(this.slice,this.sceneId);this.updateReadout();this.dirty=true;}
+ pause(){this.playing=false;this.held.clear();if(this.active)this.updateMotion();}
+ travel(sign){if(!this.active||this.$('#panel').open)return;this.direction=sign;this.playing=true;this.lastTime=null;this.updateMotion();}
+ toggle(){if(this.playing){this.pause();this.announce(`Paused at W ${this.w.toFixed(3)}. The cross-section is held still.`);}else{const [min,max]=this.scene.range;if(this.w>=max-1e-8)this.direction=-1;if(this.w<=min+1e-8)this.direction=1;this.travel(this.direction);}}
+ updateMotion(){const $=this.$;$('#wPlay').innerHTML=this.playing?'Pause <kbd>Space</kbd>':'Play <kbd>Space</kbd>';$('#wPlay').setAttribute('aria-label',this.playing?'Pause continuous W movement':'Play continuous W movement');$('#wPlay').setAttribute('aria-pressed',String(this.playing));
+  $('#wBackward').setAttribute('aria-pressed',String(this.playing&&this.direction<0));$('#wForward').setAttribute('aria-pressed',String(this.playing&&this.direction>0));
+  $('#labMotion').textContent=this.playing?`Travelling ${this.direction>0?'+W':'−W'} · the 4D object stays still.`:'Paused · W is a place, not time.';$('#labDirection').textContent=`${this.direction>0?'+W →':'← −W'} · XYZ stays fixed`;
+ }
+ updateReadout(){const $=this.$,slice=this.slice,m=slice.metrics;$('#labW').textContent=(this.w>=0?'+':'')+this.w.toFixed(3);$('#wSlider').value=this.w;$('#wSlider').setAttribute('aria-valuetext',`W ${this.w.toFixed(3)}. ${slice.summary}`);
+  $('#labState').textContent=slice.status==='absent'?'Outside the object':slice.status==='tangent'?'At a boundary':this.sceneId==='torus'?(m.touching?'Touching at one point':m.components===2?'Two separate pieces':'One connected piece'):'One solid section';
+  $('#labSummary').textContent=slice.summary;$('#labComponents').textContent=slice.status==='absent'?'0':String(m.components);
+  $('#labSpans').textContent=m.bounds?m.bounds.min.map((n,i)=>(m.bounds.max[i]-n).toFixed(2)).join(' × '):'0 × 0 × 0';this.updateProbe();this.updateMotion();
+ }
+ updateProbe(){if(!this.slice)return;const inside=SpaceContinuous.contains(this.sceneId,this.probe,this.w);this.$('#probeState').textContent=`XYZ (${this.probe.map(n=>n.toFixed(1)).join(', ')}) · ${inside?'inside this slice':'outside this slice'}`;this.$('#probeMarker').classList.toggle('inside',inside);this.$('#probeMarker span').textContent=inside?'XYZ · INSIDE':'XYZ · OUTSIDE';}
+ announce(message){this.$('#labAnnouncement').textContent=message;}
+ keydown(e){if(!this.active||!this.options.keyboard()||e.ctrlKey||e.metaKey||e.altKey||this.$('#panel').open||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return;const key=e.key.toLowerCase();
+  if(key==='q'||key==='e'){e.preventDefault();if(!e.repeat){this.travel(key==='e'?1:-1);this.held.add(key);}return;}
+  if((key===' '&&e.target.tagName!=='BUTTON')||key==='p'){e.preventDefault();if(!e.repeat)this.toggle();}
+  else if(key==='v'){e.preventDefault();if(!e.repeat){this.direction*=-1;this.updateMotion();}}
+  else if(key==='?'||key==='h'){e.preventDefault();this.guide();}
+ }
+ guide(){this.pause();this.options.panel('THE CONTINUOUS W FIELD GUIDE',`<h2>Keep the relations. Let the picture follow.</h2><p>You do not need to hold a four-dimensional picture in your head. Begin with one rule: <strong>a position needs four independent numbers, (X, Y, Z, W).</strong> Change only W, and the other three stay fixed.</p><h3>Think of a scanner</h3><p>A flat scan through an ordinary ball shows circles that grow and shrink. The ball itself does not inflate. Now move that relation up one dimension: a three-dimensional scan through a <strong>4D solid ball</strong> shows ordinary solid balls that grow and shrink.</p><h3>What you are looking at</h3><p>The screen is a perspective view of the <strong>XYZ intersection at one exact W</strong>. It is not a projection of the entire 4D object. The grid and X/Y/Z axes are reference marks. Dragging changes your viewpoint; it does not change W or the geometry.</p><h3>Try one small loop</h3><ol><li>Choose Ball, then <strong>Largest</strong>. Remember that section.</li><li>Press <strong>+W</strong>. Only W changes. Pause whenever you want.</li><li>Press <strong>−W</strong>. Returning to the same W returns exactly the same shape.</li><li>Open <strong>A fixed XYZ point</strong>. Its numbers stay still, but membership in the object can change as W changes.</li><li>Choose Loop. Its two separate pieces can be connected through W, even when no path joins them inside the current XYZ slice.</li></ol><h3>W is not time</h3><p>Playback moves your cutting position through space at a chosen speed. Pause it and W still exists. Reverse it and you revisit the same positions. Nothing about the solid is changing with time.</p><h3>Controls & limits</h3><p>Use the W slider, travel buttons, Play/Pause and Reverse. Hold <strong>Q / E</strong> to travel toward W− / W+; release to pause. <strong>Space</strong> or <strong>P</strong> toggles play; <strong>V</strong> reverses direction. Drag to orbit, scroll to zoom. Travel stops at either end, and opening a panel or leaving the window pauses it.</p><p class="fine">Every section is computed from a fixed 4D equation. Curved boundaries are displayed as triangle meshes, so they are visually approximate. There is no fade or shape tween. This lab is an inspection view, not a continuous collision-based maze or a validated training intervention. Your existing maze run stays where you left it.</p>`);}
+ explain(){this.pause();const id=this.sceneId;const content={ball:`<h2>Less room left for XYZ.</h2><p>The 4D solid ball is defined by <strong>X² + Y² + Z² + W² ≤ 2.7²</strong>.</p><p>Once W is fixed, the remaining rule is X² + Y² + Z² ≤ 2.7² − W². That is an ordinary 3D solid ball. Its radius is <strong>√(2.7² − W²)</strong>.</p><p>As |W| grows, W uses more of the fixed squared-distance allowance. There is less room left for X, Y and Z. That is why the visible ball shrinks. Its four-dimensional size never changes.</p><p>At W = ±2.7 the intersection is one point. Farther out it is empty. At opposite W positions, the slices have equal sizes. The surface is tessellated for display, not faded.</p>`,tesseract:`<h2>A fixed tilt. A moving intersection.</h2><p>Take a 4D cube with equal side lengths, then rotate it in the <strong>XW plane</strong>. This mixes X with W, while Y and Z stay unchanged.</p><p>At each W we solve the cube’s linear inequalities. The allowed X interval moves or narrows. Its Y and Z spans remain constant. The changing rectangular section is a real intersection, not a cube being stretched by an animation.</p><p>This particular tilt keeps the section a rectangular box. Other 4D rotations can give more complicated polyhedra; they are not simulated here. A section can first touch the cube along a whole face, so the visual appearance at that boundary is not a dissolve.</p>`,torus:`<h2>Separate here. Connected through W.</h2><p>The centerline is a circle in the <strong>XW plane</strong>. Give it thickness in the other directions. The fixed 4D solid obeys <strong>(√(X² + W²) − 2)² + Y² + Z² ≤ 0.85²</strong>.</p><p>At W = 0, your XYZ slice cuts the left and right sides of the loop: two separate solid pieces. Near |W| = 2, it cuts the curved end: one joined piece.</p><p>The two pieces do not teleport or become unrelated objects. They are intersections with the <strong>same connected 4D solid</strong>. A path can connect them by changing W, even when no path stays inside this particular slice.</p><p>At |W| = 1.15 the pieces touch at one point. Just beyond it a narrow connection opens. Their topology changes, while the surface positions vary continuously. A coarse triangle mesh can make that very thin neck hard to see.</p>`}[id];this.options.panel('WHY THE SECTION CHANGES',`${content}<h3>At your current position</h3><p>W = ${this.w.toFixed(3)}. ${this.slice.summary}</p><p class="fine">The gold probe reports membership using the equation, independently of the triangle mesh. It is an X-ray overlay, not an extra axis or a visible hole.</p>`);}
+ camera(){const horizontal=Math.cos(this.elevation)*this.distance;return {eye:[-Math.sin(this.yaw)*horizontal,Math.sin(this.elevation)*this.distance,-Math.cos(this.yaw)*horizontal],yaw:this.yaw,pitch:-this.elevation};}
+ project(point,camera){const [x,y,z]=[point[0],point[2],point[1]],dx=x-camera.eye[0],dy=y-camera.eye[1],dz=z-camera.eye[2],f=Math.sin(camera.yaw)*dx+Math.cos(camera.yaw)*dz,xx=Math.cos(camera.yaw)*dx-Math.sin(camera.yaw)*dz,yy=Math.cos(camera.pitch)*dy-Math.sin(camera.pitch)*f,zz=Math.sin(camera.pitch)*dy+Math.cos(camera.pitch)*f;if(zz<.08)return null;return [innerWidth/2+xx/zz*innerHeight*.675,innerHeight/2-yy/zz*innerHeight*.675];}
+ placeMarker(selector,point,camera){const el=this.$(selector),p=this.project(point,camera);el.hidden=!p||p[0]<20||p[0]>innerWidth-20||p[1]<75||p[1]>innerHeight-20;if(p){el.style.left=`${p[0]}px`;el.style.top=`${p[1]}px`;}}
+ frame(time){if(!this.active)return;if(this.$('#panel').open&&this.playing)this.pause();const dt=this.lastTime===null?0:Math.min(.05,Math.max(0,(time-this.lastTime)/1000));this.lastTime=time;
+  if(this.playing){const [min,max]=this.scene.range,next=this.w+dt*this.speed*this.direction;this.setW(next);if(next<=min||next>=max){this.pause();this.announce(`Reached W ${this.w.toFixed(3)}. Paused at the end of the range. Reverse to come back.`);}}
+  if(this.dirty){const camera=this.camera();this.renderer.draw(camera.eye,camera.yaw,camera.pitch,1);this.placeMarker('#probeMarker',this.probe,camera);if(this.slice.dimension===0)this.placeMarker('#tangentMarker',this.slice.vertices[0],camera);else this.$('#tangentMarker').hidden=true;this.placeMarker('#axisX',[4.35,0,-3.09],camera);this.placeMarker('#axisY',[0,4.35,-3.09],camera);this.placeMarker('#axisZ',[-4,-4,1.8],camera);this.dirty=false;}
+ }
+}
+</script><script>(()=>{'use strict';
+const $=s=>document.querySelector(s),F=FourthSpace,N=SpaceNav;
+let renderer;try{renderer=new SpaceRenderer($('#world'));}catch(e){$('#fatal').hidden=false;$('#landing').hidden=true;console.error(e);return;}
+let level=0,seed=2048,g=F.level(0),pos=[...g.start],yaw=Math.PI/2,pitch=0,eye=N.world(pos),active=false,moving=null,turning=null,history=[],visited=new Set([F.key(pos)]),moves=0,hintPos=null,won=false,last=0,drawDirty=true;
+let reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,trail=true,keyboard=true,showAll=false;
+try{const prefs=JSON.parse(localStorage.getItem('fourth-space-immersive-prefs')||'{}');if(typeof prefs.reduce==='boolean')reduce=prefs.reduce;if(typeof prefs.trail==='boolean')trail=prefs.trail;}catch{}
+const savePrefs=()=>{try{localStorage.setItem('fourth-space-immersive-prefs',JSON.stringify({reduce,trail}));}catch{}};
+const lab=new SpaceLab(renderer,{exit:leaveLab,panel:openPanel,keyboard:()=>keyboard});
+function enterLab(){if(moving)return;lab.enter();$('#hud').hidden=true;$('#landing').hidden=true;$('#panel').close();}
+function leaveLab(){lab.exit();$('#hud').hidden=!active;$('#landing').hidden=active;rebuild();drawDirty=true;}
+const labels=['Beyond the wall','The ascending path','The hypermaze','The observatory'];
+const descriptions=['Leave the familiar three dimensions. Find the amber beacon, beyond a sealed wall.','Rise through Z. Shift through W. Learn why they are different directions.','A 144-room labyrinth across four spatial axes. Map it, retrace it, find your way home.','An open 4D lattice. Explore all eight directions without a destination.'];
+const phases=['LIMINAL','PARALLAX','AFTERLIGHT'];
+function say(s){$('#status').textContent=s;}
+function rebuild(w=pos[3]){if(lab.active){lab.setW(lab.w);return;}renderer.build(g,w,visited,trail,hintPos);drawDirty=true;}
+function hud(){
+ $('#chapter').textContent=level===3?'FREE EXPLORATION':`EXPEDITION 0${level+1}`;$('#levelName').textContent=labels[level];$('#missionText').textContent=descriptions[level];$('#moves').textContent=moves;$('#visited').textContent=visited.size;$('#phaseValue').textContent=pos[3];$('#phaseName').textContent=phases[pos[3]]||'BEYOND';$('#coordinates').textContent=`X ${pos[0]} · Y ${pos[1]} · Z ${pos[2]}`;
+ const wOpen=!!F.next(g,pos,3,-1)||!!F.next(g,pos,3,1);$('#phaseCue').textContent=wOpen?'W passage open. No aiming needed.':'No W passage in this room.';
+ $('#phaseTrack').innerHTML=Array.from({length:g.dims[3]},(_,i)=>`<i class="${i===pos[3]?'on':''}"></i>`).join('');
+ const a=N.heading(yaw);const exits=[];for(let ax=0;ax<4;ax++)for(const sign of [-1,1])if(F.next(g,pos,ax,sign))exits.push(F.AXES[ax]+(sign>0?'+':'−'));
+ $('#directionInfo').textContent=`FACING ${F.AXES[a[0]]}${a[1]>0?'+':'−'}   /   EXITS ${exits.join('  ')}`;
+ document.querySelectorAll('[data-axis]').forEach(b=>{const [a,s]=b.dataset.axis.split(',').map(Number);b.disabled=!!moving||!F.next(g,pos,a,s);});
+ $('#undo').disabled=history.length===0||!!moving;$('#hint').disabled=!g.goal||won;$('#transitionLabel').textContent='';
+}
+function start(id=level){if(lab.active)lab.exit();level=id;g=F.level(level,seed);pos=[...g.start];eye=N.world(pos);yaw=Math.PI/2;pitch=0;moving=turning=null;history=[];visited=new Set([F.key(pos)]);moves=0;hintPos=null;won=false;active=true;$('#landing').hidden=true;$('#hud').hidden=false;document.body.classList.remove('phase-shift');$('#panel').close();hud();rebuild();say(level===0?'Take one step forward. The bright pad ahead opens a W passage.':level===3?'Eight directions. No destination. See what changes when only W changes.':'Follow open doorways. Glowing pads mark W passages; violet hatches mark Z.');}
+function step(axis,sign,undo=false){
+ if(lab.active||!active||moving||$('#panel').open)return false;const target=F.next(g,pos,axis,sign);if(!target){say(N.blockedFeedback(axis,sign,!!F.next(g,pos,axis,-sign)));return false;}
+ const old=[...pos];if(!undo){history.push(old);moves++;}hintPos=null;won=false;
+ moving={from:old,to:target,axis,start:performance.now(),duration:reduce?0:axis===3?850:axis===2?750:520,switched:false};
+ if(axis===3){document.body.classList.add('phase-shift');say(`Moving through W. X ${pos[0]}, Y ${pos[1]} and Z ${pos[2]} stay fixed.`);}else if(axis===2)say(sign>0?'Rising along Z. W stays unchanged.':'Descending along Z. W stays unchanged.');else say('Following the passage.');hud();return true;
+}
+function finish(){pos=[...moving.to];eye=N.world(pos);visited.add(F.key(pos));moving=null;document.body.classList.remove('phase-shift');rebuild();hud();
+ if(g.goal&&F.same(pos,g.goal)){won=true;say('Beacon reached. All four coordinates match.');openWin();}
+ else if(F.next(g,pos,3,1)||F.next(g,pos,3,-1))say('Phase pad: use Q / E or W − / W +. No aiming needed. Your XYZ location stays fixed.');
+ else if(F.next(g,pos,2,1)||F.next(g,pos,2,-1))say('Vertical passage: R to rise, F to descend. This changes Z, not W.');
+ else say('Find the next opening. You can retrace any passage.');
+}
+function turn(sign){if(lab.active||!active||moving)return;const target=Math.round(yaw/(Math.PI/2))*Math.PI/2+sign*Math.PI/2;turning=reduce?null:{from:yaw,to:target,start:performance.now()};if(reduce)yaw=target;hud();drawDirty=true;}
+function relative(dir){const [axis,sign]=N.relative(yaw,dir);step(axis,sign);}
+function undo(){if(!history.length||moving)return;const prev=history.pop(),d=F.delta(pos,prev);if(!step(d.axis,d.sign,true))history.push(prev);}
+function hint(){if(!g.goal||moving)return;const path=F.shortest(g,pos,g.goal);if(!path||path.length<2)return;hintPos=path[1];const d=F.delta(pos,hintPos);const key=d.axis===3?(d.sign>0?'E':'Q'):d.axis===2?(d.sign>0?'R':'F'):null;say(`Next step: ${F.AXES[d.axis]}${d.sign>0?'+':'−'}.${key?' Press '+key+'.':''} ${path.length-1} steps remain on the shortest route.`);rebuild();}
+function openPanel(title,html){if(moving)return;if(lab.active)lab.pause();$('#panelEyebrow').textContent=title;$('#panelBody').innerHTML=html;$('#panel').showModal();}
+function menu(){openPanel('CHOOSE AN EXPEDITION',`<h2>One more direction.</h2><p>Start with the short guided route, then build your spatial intuition.</p><div class="expeditions">${labels.map((l,i)=>`<button class="expedition" data-level="${i}"><small>${i===3?'OPEN LAB':`EXPEDITION 0${i+1}`}</small><b>${l} ↗</b><p>${descriptions[i]}</p></button>`).join('')}</div><button class="expedition lab-menu-entry" id="menuLab"><small>CONTINUOUS W / SLICE LAB</small><b>One object. Many cross-sections. ↗</b><p>Pause, reverse and inspect true sections of fixed four-dimensional solids. Your current maze run is kept.</p></button><div class="seedrow"><label>Hypermaze seed <input id="seed" type="number" value="${seed}" min="0" max="4294967295" aria-label="Hypermaze seed"></label><button id="newseed">Randomize seed</button></div><p class="fine">Selecting an expedition resets your current run. This prototype does not save unfinished runs.</p>`);
+ $('#menuLab').onclick=enterLab;$('#newseed').onclick=()=>{$('#seed').value=Math.floor(Math.random()*1000000);};document.querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>{const n=Number($('#seed').value);seed=Number.isFinite(n)?Math.max(0,Math.min(4294967295,Math.floor(n))):2048;start(Number(b.dataset.level));});}
+function guide(){if(lab.active){lab.guide();return;}openPanel('FIELD GUIDE',`<h2>Not a portal. A direction.</h2><p>You occupy one room at <strong>(X, Y, Z, W)</strong>. This view shows its three-dimensional <strong>XYZ slice</strong>. X and Y run across the floor. Z goes up and down. W is perpendicular to all three, so it has no ordinary on-screen compass direction.</p><h3>How to move</h3><div class="controls-list"><div><kbd>W A S D</kbd> or arrows: one room, relative to view</div><div>Drag the scene to look around</div><div><kbd>J / L</kbd> turn left / right by 90°</div><div><kbd>R / F</kbd> rise / descend through a Z hatch</div><div><kbd>Q / E</kbd> move W − / W + (also the labeled screen buttons)</div><div><kbd>M</kbd> atlas · <kbd>H</kbd> hint · <kbd>Backspace</kbd> retrace</div></div><p><strong>The keyboard W key moves forward; it does not move along the W axis.</strong> Use Q for W− and E for W+. The pad marks a passage in your current room; you do not need to aim at it, click it, or walk onto it. It may sit below your view.</p><p>Movement snaps to the nearest horizontal compass direction. The bottom readout always states which axis you face. Touch controls provide the same actions.</p><h3>Read the architecture</h3><p><strong>Open frames:</strong> ordinary X/Y passages. <strong>Glowing floor pads:</strong> W passages. <strong>Violet hatches:</strong> Z passages. <strong>Amber beacon:</strong> the exit. Your goal must match all four coordinates.</p><h3>What the effect means</h3><p>A W step preserves X, Y and Z while revealing a different slice of the same four-dimensional maze. The fade is a visual aid between discrete neighboring rooms, <strong>not an exact continuous cross-section simulation</strong>. Colors label W slices; W is a spatial coordinate, not time or a parallel universe.</p><p>The corridors form a genuine four-coordinate graph. This is first-person, room-by-room navigation, not free-flight physics. It is an exploration prototype, not a proven cognitive training program.</p><p class="fine">Drag to look does not capture your cursor. No account, network calls or installation.</p>`);}
+function settings(){openPanel('COMFORT & DISPLAY',`<h2>Explore at your pace.</h2><label class="option"><span>Instant movement<br><small class="fine">Skip maze camera travel and phase fades. The lab moves only when you choose to play.</small></span><input id="reduce" type="checkbox" ${reduce?'checked':''}></label><label class="option"><span>Floor breadcrumbs<br><small class="fine">Mark rooms you have already visited.</small></span><input id="trail" type="checkbox" ${trail?'checked':''}></label><label class="option"><span>Keyboard shortcuts<br><small class="fine">Turn off if they conflict with assistive input.</small></span><input id="keyboard" type="checkbox" ${keyboard?'checked':''}></label><p class="fine">There is no camera bob, flashing or forced cursor lock. Motion preference and breadcrumbs are stored only in this browser. You can pause at any time by opening a panel.</p>`);$('#reduce').onchange=e=>{reduce=e.target.checked;savePrefs();};$('#trail').onchange=e=>{trail=e.target.checked;savePrefs();rebuild();};$('#keyboard').onchange=e=>keyboard=e.target.checked;}
+function atlas(){if(!active)return;openPanel('CARTOGRAPHY / XYZ ATLAS',`<h2>Same space. Different slices.</h2><p>Each card is an XY floor plan at the labeled Z and W. You are the white ring. The amber diamond is the exit. Small squares mark Z hatches; circles mark W passages.</p><label class="option"><span>Reveal undiscovered rooms</span><input id="reveal" type="checkbox" ${showAll?'checked':''}></label><div class="atlas-grid" id="maps"></div><p class="fine">Maps are exact slices of the graph. Rooms on different cards can share X and Y without being the same room.</p>`);$('#reveal').onchange=e=>{showAll=e.target.checked;drawMaps();};drawMaps();}
+function drawMaps(){const el=$('#maps');el.innerHTML='';for(let w=0;w<g.dims[3];w++)for(let z=0;z<g.dims[2];z++){
+ const card=document.createElement('div');card.className='map-card';const cap=document.createElement('b');cap.textContent=`W ${w} / Z ${z}`;card.append(cap);const c=document.createElement('canvas');c.width=260;c.height=210;card.append(c);el.append(card);const ctx=c.getContext('2d'),sx=220/Math.max(g.dims[0]-1,1),sy=165/Math.max(g.dims[1]-1,1);const xy=p=>[20+p[0]*sx,185-p[1]*sy];
+ for(const p of g.cells.values()){if(p[2]!==z||p[3]!==w||(!showAll&&!visited.has(F.key(p))))continue;const [x,y]=xy(p);for(const k of g.edges.get(F.key(p))){const q=F.point(k);if(q[2]!==z||q[3]!==w||(!showAll&&!visited.has(k)))continue;const [xx,yy]=xy(q);ctx.strokeStyle='#3f716c';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();}ctx.fillStyle=visited.has(F.key(p))?'#a5f5db':'#436566';ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();if(F.next(g,p,3,1)||F.next(g,p,3,-1)){ctx.strokeStyle='#c0a3ee';ctx.beginPath();ctx.arc(x,y,8,0,Math.PI*2);ctx.stroke();}if(F.next(g,p,2,1)||F.next(g,p,2,-1)){ctx.strokeStyle='#c0a3ee';ctx.strokeRect(x-10,y-10,20,20);}if(g.goal&&F.same(p,g.goal)){ctx.fillStyle='#ffc37a';ctx.beginPath();ctx.moveTo(x,y-8);ctx.lineTo(x+8,y);ctx.lineTo(x,y+8);ctx.lineTo(x-8,y);ctx.fill();}if(F.same(p,pos)){ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,12,0,Math.PI*2);ctx.stroke();}}
+ }}
+function openWin(){const shortest=F.shortest(g,g.start,g.goal).length-1;openPanel('EXPEDITION COMPLETE',`<div class="eyebrow">ALL FOUR COORDINATES ALIGNED</div><h2 style="margin-top:15px">You found another way.</h2><p>${g.insight}</p><p><strong>${moves} forward steps</strong> · ${visited.size} rooms discovered · ${shortest}-step shortest route</p><p class="fine">Retracing does not erase exploratory steps. There is no time pressure.</p><button class="primary" id="next">${level<2?'Next expedition':'Explore the observatory'} ↗</button>`);$('#next').onclick=()=>start(Math.min(level+1,3));}
+$('#enter').onclick=()=>start(0);$('#enterLab').onclick=enterLab;$('#menu').onclick=menu;$('#guide').onclick=guide;$('#settings').onclick=settings;$('#atlas').onclick=atlas;$('#hint').onclick=hint;$('#undo').onclick=undo;$('#close').onclick=()=>$('#panel').close();$('#home').onclick=e=>{e.preventDefault();menu();};
+document.querySelectorAll('[data-move]').forEach(b=>b.onclick=()=>relative(b.dataset.move));document.querySelectorAll('[data-turn]').forEach(b=>b.onclick=()=>turn(+b.dataset.turn));document.querySelectorAll('[data-axis]').forEach(b=>b.onclick=()=>step(...b.dataset.axis.split(',').map(Number)));
+window.addEventListener('keydown',e=>{if(lab.active||!keyboard||e.ctrlKey||e.metaKey||e.altKey||$('#panel').open||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const k=e.key.toLowerCase(),actions={w:()=>relative('forward'),arrowup:()=>relative('forward'),s:()=>relative('back'),arrowdown:()=>relative('back'),a:()=>relative('left'),arrowleft:()=>relative('left'),d:()=>relative('right'),arrowright:()=>relative('right'),q:()=>step(3,-1),e:()=>step(3,1),r:()=>step(2,1),f:()=>step(2,-1),j:()=>turn(-1),l:()=>turn(1),m:atlas,h:hint,backspace:undo,'?':guide};if(actions[k]){e.preventDefault();if(!e.repeat)actions[k]();}});
+let drag=null;$('#world').addEventListener('pointerdown',e=>{if(lab.active||!active||moving)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY};$('#world').setPointerCapture(e.pointerId);turning=null;});$('#world').addEventListener('pointermove',e=>{if(lab.active||!drag||e.pointerId!==drag.id||moving)return;yaw+=(e.clientX-drag.x)*.005;pitch=Math.max(-.9,Math.min(.9,pitch-(e.clientY-drag.y)*.004));drag.x=e.clientX;drag.y=e.clientY;hud();drawDirty=true;});for(const ev of ['pointerup','pointercancel','lostpointercapture'])$('#world').addEventListener(ev,()=>drag=null);
+$('#world').addEventListener('webglcontextlost',e=>{e.preventDefault();$('#fatal').hidden=false;$('#fatal').innerHTML='<h1>3D view interrupted</h1><p>The graphics context was lost. Reload this file to restart the game.</p>';});
+window.addEventListener('resize',()=>drawDirty=true);rebuild();
+function frame(t){if(lab.active){lab.frame(t);requestAnimationFrame(frame);return;}let dim=1;if(moving){const m=moving,progress=m.duration?Math.min(1,(t-m.start)/m.duration):1;if(m.axis===3){$('#transitionLabel').textContent=`W ${m.from[3]} → ${m.to[3]}   ·   XYZ FIXED`;dim=reduce?1:1-.82*Math.sin(progress*Math.PI);if(progress>=.5&&!m.switched){m.switched=true;rebuild(m.to[3]);}}else{const a=N.world(m.from),b=N.world(m.to),v=N.ease(progress);eye=a.map((x,i)=>x+(b[i]-x)*v);}drawDirty=true;if(progress>=1)finish();}
+ if(turning){const p=Math.min(1,(t-turning.start)/220);yaw=turning.from+(turning.to-turning.from)*N.ease(p);drawDirty=true;if(p>=1){turning=null;hud();}}
+ if(!active){eye=N.world(pos);eye[0]-=.9;eye[2]+=.7;yaw=1.16;pitch=-.04;}
+ if(drawDirty||(!active&&t-last>1000)){renderer.draw(eye,yaw,pitch,dim);drawDirty=false;last=t;}requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+})();
+</script></body></html>

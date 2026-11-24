@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1218"><meta name="description" content="Build intuition for a fourth spatial direction. A playable, fully local 4D maze and exploration lab.">
+<title>Fourth Space · A new direction</title>
+<style>:root{color-scheme:dark;--bg:#0b1218;--panel:#111c24;--line:#26353f;--muted:#97a9b4;--text:#e9f1f2;--mint:#acf6d2;--x:#9ec9ff;--y:#f4c180;--z:#bfa3ff;--w:#8cf1c6;--pink:#ff9cb8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#17282d 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,select,input{font:inherit}button,a,select,input{touch-action:manipulation}button{cursor:pointer;color:inherit;background:transparent;border:0}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:4px}button:disabled{cursor:default}button[hidden],[hidden]{display:none!important}button:hover:not(:disabled){filter:brightness(1.13)}.app{max-width:1480px;margin:auto;padding:0 48px}.masthead{height:93px;display:flex;align-items:center;border-bottom:1px solid var(--line);gap:20px}.brand{display:flex;gap:12px;align-items:center;color:var(--text);text-decoration:none;font-weight:700;font-size:17px;letter-spacing:1.8px}.brand svg{width:38px;height:38px;fill:none;stroke:var(--mint);stroke-width:1.35}.brand-light{font-weight:350;color:#afc0c8}.header-note{margin-left:auto;font-size:10px;letter-spacing:1.7px;color:var(--muted);display:flex;align-items:center;gap:9px}.live-dot{width:5px;height:5px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px #acf6d255}.version{border:1px solid var(--line);padding:1px 6px;letter-spacing:0;margin-left:4px}.quiet{font-size:12px;color:#b7c7cf;padding:8px 11px;border:1px solid transparent;border-radius:6px}.quiet:hover:not(:disabled){background:#ffffff09}.masthead .quiet{margin-left:26px}.intro{display:flex;align-items:center;justify-content:space-between;margin:38px 0 30px}.eyebrow{font-size:10px;letter-spacing:1.9px;color:var(--muted);margin:0 0 8px;font-weight:600}h1{font-size:44px;line-height:1.13;font-weight:500;letter-spacing:-1.7px;margin:0 0 12px}h2,h3,p{margin-top:0}.intro-copy{font-size:15px;color:var(--muted);margin-bottom:0}.intro-badge{display:flex;align-items:center;gap:13px;color:#96b0b2;font-size:9px;letter-spacing:2px;line-height:1.7}.badge-numeral{font-size:64px;font-weight:200;color:#acc0bd;line-height:1}.level-nav{display:flex;border-bottom:1px solid var(--line);gap:20px;margin-bottom:26px}.level-tab{font-size:12px;padding:13px 7px 15px;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}.level-tab span{font-size:10px;margin-right:10px;opacity:.6}.level-tab.active{border-bottom-color:var(--mint);color:var(--mint)}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px}.panel{background:linear-gradient(130deg,#14212a66,transparent 70%),var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}.panel-head{display:flex;justify-content:space-between;gap:15px;padding:23px 26px 18px}.panel-head h2{font-size:22px;font-weight:500;letter-spacing:-.4px;margin:0}.panel-head .eyebrow{font-size:9px;letter-spacing:1.5px;margin-bottom:4px}.stats{display:flex;gap:26px;text-align:right}.stats div{display:flex;flex-direction:column}.stats strong{font-size:23px;font-weight:450;line-height:1.15}.stats span{font-size:8px;letter-spacing:1.5px;color:var(--muted);margin-top:4px}.coordinate-bar{display:flex;align-items:center;gap:18px;background:#09121966;border-top:1px solid #23323d;border-bottom:1px solid #23323d;padding:12px 26px}.position-label{font-size:8px;letter-spacing:1.7px;color:var(--muted)}.coordinates{display:flex;gap:18px}.coord{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:18px;color:#e4ecee;display:flex;gap:9px;align-items:baseline}.coord span{font-size:10px}.coord.changed{animation:flash .4s ease-out}.coord:nth-child(1) span,.axis-x{color:var(--x)}.coord:nth-child(2) span,.axis-y{color:var(--y)}.coord:nth-child(3) span,.axis-z{color:var(--z)}.coord:nth-child(4) span,.axis-w{color:var(--w)}.seed-label{font-size:9px;color:var(--muted);margin-left:auto}.map-toolbar{display:flex;align-items:center;gap:12px;padding:17px 26px 4px;font-size:10px}.view-selector{display:flex;align-items:center;gap:8px}.view-selector label{color:var(--muted)}select{font-size:11px;padding:3px 26px 3px 8px;background:#182832;color:var(--text);border:1px solid var(--line);border-radius:5px}.slice-label{color:#b8c8d0;letter-spacing:.3px}.toggle{display:flex;align-items:center;gap:5px;margin-left:auto;color:var(--muted)}input[type=checkbox]{accent-color:var(--mint)}.map-wrap{position:relative;padding:0 12px}.map-wrap canvas{height:300px;width:100%;display:block}.map-caption{display:flex;align-items:center;gap:18px;padding:0 14px 14px;font-size:9px;color:#94a9b5}.map-caption>span{display:flex;gap:6px;align-items:center}.legend-dot{width:6px;height:6px;border-radius:50%;background:var(--mint)}.legend-dot.passage{background:#536b79}.legend-diamond{width:7px;height:7px;background:var(--pink);transform:rotate(45deg)}.map-caption .map-tip{margin-left:auto;color:#69828e}.w-section{padding:13px 26px 15px;border-top:1px solid #24343e;background:#0c171d55}.mini-heading{display:flex;justify-content:space-between;gap:10px;font-size:8px;letter-spacing:1.5px;color:#8ba3ae;margin-bottom:7px}.mini-heading span:last-child{letter-spacing:0;color:#708c98}.w-previews{display:grid;grid-template-columns:1fr 64px 1fr;gap:10px;align-items:center}.mini-map{position:relative;border:1px solid #29404a;background:#101e26;border-radius:6px;overflow:hidden;height:102px}.mini-label{position:absolute;top:5px;left:9px;font:9px ui-monospace,monospace;color:#88c1ad;z-index:1}.mini-map canvas{width:100%;height:100%;display:block}.w-bridge{display:flex;flex-direction:column;align-items:center;color:#6f9192;font-size:8px;gap:1px}.w-bridge .w-symbol{font-size:18px;color:var(--mint);font-family:ui-monospace,monospace}.w-bridge>span:last-child{font-size:20px;line-height:1.1}.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px 26px 12px}.axis-control{min-width:0}.axis-name{display:block;font-family:ui-monospace,monospace;font-size:12px;color:var(--x);margin-bottom:8px}.axis-name small{font:7px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.9px;color:var(--muted);margin-left:5px}.axis-control[data-axis="1"] .axis-name{color:var(--y)}.axis-control[data-axis="2"] .axis-name{color:var(--z)}.w-control .axis-name{color:var(--w)}.axis-control>div{display:flex;gap:5px}.axis-control button{flex:1;min-width:0;padding:9px 3px;border:1px solid #557482;background:#243d49;color:#e5f4f9;border-radius:6px;font:12px ui-monospace,monospace;min-height:44px}.axis-control button:disabled{background:#0e1920;border-color:#24323b;color:#536a76}.axis-control button.hinted{box-shadow:0 0 0 2px #fff09a;border-color:#fff09a}.w-control button:not(:disabled){background:#22443b;border-color:#6fae91;color:#c7ffe4}.axis-control kbd{display:block;color:#9ab3be;font-size:9px;margin-top:4px;opacity:.7}.axis-control button:disabled kbd{color:#455e6a}.status-line{font-size:11px;color:#adc4cc;min-height:34px;padding:1px 26px 10px}.game-actions{border-top:1px solid var(--line);padding:11px 17px;display:flex;gap:5px}.game-actions button:disabled{opacity:.35}.hint-button{margin-left:auto;font-size:11px;color:var(--mint);border-radius:5px;padding:8px 10px}.hint-button span{margin-left:10px}.side-column{display:flex;flex-direction:column;gap:20px}.lesson-card{padding:23px 24px}.card-label{display:flex;align-items:center;gap:9px;font-size:9px;color:var(--mint);letter-spacing:1.8px;margin-bottom:19px}.small-orbit{font-size:21px;line-height:1}.lesson-card h3{font-size:22px;font-weight:450;line-height:1.22;letter-spacing:-.5px;margin-bottom:12px}.lesson-card p{font-size:12px;color:#a5bac5;line-height:1.75;margin-bottom:22px}.goal-box{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:16px;gap:10px}.goal-box>span{font-size:8px;color:var(--muted);letter-spacing:1.4px}.goal-box strong{font:12px ui-monospace,monospace;color:var(--pink)}.progress-track{height:3px;background:#273942;border-radius:4px;margin-top:20px;overflow:hidden}.progress-track>div{height:100%;background:var(--mint);transition:width .25s}.progress-label{font-size:9px;color:var(--muted);margin-top:8px}.projection-panel{padding:21px 22px 18px}.projection-heading{display:flex;justify-content:space-between;align-items:center}.projection-heading h3{font-size:18px;font-weight:500;margin:0}.projection-heading .eyebrow{font-size:8px;letter-spacing:1.4px;margin-bottom:5px}.tiny-tag{border:1px solid #354650;border-radius:4px;font-size:7px;letter-spacing:.9px;padding:3px 5px;color:var(--muted)}#projection{width:100%;height:204px;display:block}.projection-controls{display:grid;grid-template-columns:1fr auto;font-size:10px;color:#b2c5cd;gap:10px}.projection-controls output{font-family:ui-monospace,monospace;color:var(--mint)}.projection-controls input{grid-column:1/-1;accent-color:var(--mint);width:100%;height:3px;margin:2px 0 11px}.projection-legend{display:flex;gap:12px;font:10px ui-monospace,monospace;margin-top:7px;align-items:center}.projection-legend span:last-child{font:8px ui-sans-serif,system-ui,sans-serif;color:var(--muted);margin-left:auto}.fine-print{font-size:10px;color:#7f98a4;line-height:1.6;margin:14px 0 0}.insight-card{display:flex;gap:12px;padding:0 6px}.insight-icon{font-size:22px;color:#77a696}.insight-card p{font-size:11px;color:#8fa6b2;line-height:1.7;margin:0}.insight-card strong{color:#bfd1d7;font-weight:500}footer{display:flex;justify-content:space-between;gap:12px;padding:26px 0 32px;font-size:8px;letter-spacing:1.3px;color:#5e7887}footer span:last-child{letter-spacing:.3px}dialog{width:min(560px,calc(100vw - 32px));border:1px solid #3d575f;border-radius:16px;background:#13222b;color:var(--text);padding:28px 32px;box-shadow:0 30px 120px #0009;max-height:calc(100dvh - 32px);overflow:auto}dialog::backdrop{background:#030a10cc;backdrop-filter:blur(5px)}.dialog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.dialog-top .eyebrow{margin:0;color:var(--mint)}.close{font-size:26px;line-height:1;color:var(--muted);padding:0 2px 3px}dialog h2{font-size:33px;line-height:1.15;font-weight:450;letter-spacing:-1px;margin-bottom:18px}dialog>p{font-size:13px;color:#abc0ca;line-height:1.7}.guide-list{padding-left:19px;font-size:12px;color:#abc0ca;line-height:1.7}.guide-list li{padding-left:5px;margin:13px 0}.guide-list strong{color:var(--text);font-weight:550}.guide-keys{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:11px}.guide-keys>strong{color:var(--mint);font-weight:500}.guide-keys span{color:#a9bfca}.primary{background:var(--mint);color:#102a22;border:0;border-radius:7px;width:100%;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:13px;margin-top:24px}.win-symbol{font-size:62px;line-height:1;color:var(--mint);margin:10px 0 20px}.win-stats{display:grid;grid-template-columns:repeat(3,1fr);padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);gap:10px}.win-stats div{display:flex;flex-direction:column}.win-stats strong{font-size:25px;font-weight:450;color:var(--mint)}.win-stats span{font-size:9px;color:var(--muted);letter-spacing:1px}.replay{display:block;margin:10px auto 0}@keyframes flash{0%{background:#acf6d233}100%{background:transparent}}@media(min-width:1300px){.workspace{grid-template-columns:minmax(0,1fr) 350px}.map-wrap canvas{height:334px}.projection-panel{padding-bottom:24px}#projection{height:225px}}@media(max-width:1000px){.app{padding:0 28px}.workspace{grid-template-columns:minmax(0,1fr) 280px;gap:18px}.controls{gap:7px;padding:18px 18px 10px}.axis-name small{display:none}.panel-head,.coordinate-bar{padding-left:20px;padding-right:20px}.lesson-card{padding:20px}.coordinates{gap:13px}.header-note{display:none}.masthead .quiet{margin-left:auto}.intro h1{font-size:38px}.mini-heading{letter-spacing:1px}.w-section{padding-left:18px;padding-right:18px}.projection-panel{padding:18px}.projection-legend{gap:9px}}@media(max-width:780px){.workspace{grid-template-columns:1fr}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:16px}.insight-card{grid-column:1/-1}.lesson-card h3{font-size:21px}.map-wrap canvas{height:320px}.axis-name small{display:inline}.intro-badge{display:none}.level-nav{gap:8px;justify-content:space-between}.level-tab{font-size:11px}.level-tab span{margin-right:6px}.intro{margin-top:28px}.masthead{height:76px}.side-column .projection-panel{padding:18px}.projection-legend span:last-child{display:none}#projection{height:180px}.lesson-card{align-self:start}.status-line{min-height:34px}.coordinate-bar{gap:18px}}@media(max-width:480px){.app{padding:0 14px}.masthead{height:68px;gap:8px}.brand{font-size:14px;letter-spacing:1.1px;gap:8px}.brand svg{width:31px;height:31px}.masthead .quiet{font-size:11px;padding:8px 3px}.intro{margin:25px 0 23px}h1{font-size:35px!important;letter-spacing:-1.5px}.eyebrow{font-size:8px;letter-spacing:1.5px}.intro-copy{font-size:12px}.level-nav{gap:0;margin-bottom:16px}.level-tab{font-size:10px;padding:9px 3px 12px}.level-tab span{display:block;font-size:8px;margin:0 0 3px}.panel-head{padding:19px 16px 15px}.panel-head h2{font-size:20px}.stats{gap:18px}.stats strong{font-size:20px}.coordinate-bar{padding:11px 16px;gap:13px}.position-label{font-size:7px;letter-spacing:1px}.coordinates{gap:14px}.coord{font-size:17px;gap:5px}.seed-label{display:none}.map-toolbar{padding:14px 16px 2px;gap:8px;font-size:9px}.view-selector{gap:5px}.map-wrap{padding:0 4px}.map-wrap canvas{height:250px}.map-caption{gap:13px;padding:0 12px 12px;font-size:8px}.map-tip{display:none!important}.w-section{padding:11px 16px 12px}.mini-heading{font-size:7px;letter-spacing:1px}.mini-map{height:83px}.w-previews{grid-template-columns:1fr 46px 1fr;gap:8px}.controls{padding:16px 16px 8px;gap:9px;grid-template-columns:repeat(2,1fr)}.axis-name{margin-bottom:6px}.axis-name small{font-size:7px;letter-spacing:1.1px}.axis-control button{min-height:45px;display:flex;justify-content:space-around;align-items:center;font-size:13px;padding:9px 6px}.axis-control kbd{display:inline;margin:0;font-size:10px}.status-line{padding:5px 16px 12px;font-size:10px;min-height:42px}.game-actions{padding:9px 7px;gap:0}.game-actions .quiet{font-size:11px;padding:8px}.hint-button{font-size:10px;padding:8px}.hint-button span{margin-left:4px}.side-column{grid-template-columns:1fr}.lesson-card{padding:20px}.lesson-card h3{font-size:24px}.lesson-card p{font-size:12px}.goal-box{justify-content:flex-start;gap:22px}.projection-panel #projection{height:225px}.projection-legend span:last-child{display:inline}.insight-card{margin:0 4px}footer{font-size:7px;line-height:1.7;flex-direction:column;gap:5px;padding:22px 0}.dialog-top{margin-bottom:16px}dialog{padding:22px}dialog h2{font-size:28px}.guide-list{font-size:11px}.guide-keys{font-size:10px;gap:12px}.win-stats strong{font-size:22px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:480px){body{padding-bottom:156px}.controls{position:fixed;bottom:0;left:0;right:0;z-index:20;padding:12px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid #54756b;background:#0e1d25f5;backdrop-filter:blur(12px);box-shadow:0 -10px 30px #02090d55;gap:9px 14px}.controls .axis-name{margin-bottom:4px}.controls .axis-control button{min-height:42px}.map-wrap canvas{height:225px}.status-line{padding-top:12px}.game-actions{padding-bottom:13px}}
+@media(max-width:480px){.masthead{height:56px}.intro{margin:16px 0}.intro>.intro-badge,.intro .eyebrow{display:none}.intro h1{font-size:29px!important;letter-spacing:-1px;margin-bottom:7px}.intro-copy{font-size:11px}.level-tab{padding-top:5px;padding-bottom:8px}.level-nav{margin-bottom:12px}.panel-head{padding-top:15px;padding-bottom:12px}.map-toolbar{padding-top:10px}.map-wrap canvas{height:170px}}
+
+.shortcut-option{display:flex;align-items:center;gap:8px;font-size:11px;color:#b5c9d1;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="masthead">
+  <a class="brand" href="#main" aria-label="Fourth Space, skip to game"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M8 10 29 5 36 28 15 36 8 10ZM8 10 24 16 36 28M24 16 29 5M24 16 15 36M8 10 3 26 15 36M3 26 20 22 29 5M20 22 36 28M20 22 15 36"/></svg><span>FOURTH<span class="brand-light">SPACE</span></span></a>
+  <div class="header-note"><span class="live-dot"></span> SPATIAL INTUITION LAB <span class="version">v0.1</span></div>
+  <button id="guideOpen" class="quiet">How it works <span aria-hidden="true">↗</span></button>
+</header>
+<main id="main">
+<section class="intro"><div><p class="eyebrow">BEYOND LEFT, RIGHT, UP & DOWN</p><h1>Find a new direction.</h1><p class="intro-copy">Not a new world. Another way through this one.</p></div><div class="intro-badge"><span class="badge-numeral">4</span><span>INDEPENDENT<br>SPATIAL AXES</span></div></section>
+<nav class="level-nav" aria-label="Choose experience"><button class="level-tab active" data-level="0"><span>01</span> Beyond the wall</button><button class="level-tab" data-level="1"><span>02</span> Four directions</button><button class="level-tab" data-level="2"><span>03</span> Hypermaze</button><button class="level-tab" data-level="3"><span>∞</span> Open space</button></nav>
+<div class="workspace">
+<section class="game-panel panel">
+  <div class="panel-head"><div><p class="eyebrow" id="levelSubtitle">MEET A NEW DIRECTION</p><h2 id="levelTitle">Beyond the wall</h2></div><div class="stats"><div><strong id="moves">0</strong><span>MOVES</span></div><div><strong id="best">—</strong><span>BEST</span></div></div></div>
+  <div class="coordinate-bar"><div class="position-label">YOU ARE AT</div><div class="coordinates" id="coords" aria-label="Your four-dimensional coordinates"></div><div class="seed-label" id="seedLabel" hidden></div></div>
+  <div class="map-toolbar"><div class="view-selector"><label for="plane">View plane</label><select id="plane"><option value="0,1">XY</option><option value="0,3">XW</option><option value="1,3">YW</option><option value="2,3">ZW</option><option value="0,2">XZ</option><option value="1,2">YZ</option></select></div><span id="sliceLabel" class="slice-label">Z = 0 · W = 0</span><label class="toggle"><input type="checkbox" id="trail" checked><span>Trail</span></label></div>
+  <div class="map-wrap"><canvas id="maze" aria-label="Exact maze slice. Use the labeled movement buttons below; coordinates and valid passages are provided as text." role="img"></canvas><div class="map-caption"><span><i class="legend-dot player"></i> You</span><span><i class="legend-diamond"></i> Exit</span><span><i class="legend-dot passage"></i> Room</span><span class="map-tip">Lines are open passages</span></div></div>
+  <div class="w-section"><div class="mini-heading"><span>NEIGHBORING W SLICES</span><span id="previewLabel">Same X, Y and Z</span></div><div class="w-previews"><div class="mini-map"><div class="mini-label" id="minusLabel">W − 1</div><canvas id="minusPreview" role="img" aria-label="Adjacent negative W slice"></canvas></div><div class="w-bridge"><span class="w-symbol">W</span><span>same XYZ</span><span aria-hidden="true">↔</span></div><div class="mini-map"><div class="mini-label" id="plusLabel">W + 1</div><canvas id="plusPreview" role="img" aria-label="Adjacent positive W slice"></canvas></div></div></div>
+  <div class="controls" aria-label="Movement controls">
+    <div class="axis-control" data-axis="0"><span class="axis-name">X <small>LEFT / RIGHT</small></span><div><button data-axis="0" data-sign="-1" aria-label="Move negative X">−X <kbd>←</kbd></button><button data-axis="0" data-sign="1" aria-label="Move positive X">+X <kbd>→</kbd></button></div></div>
+    <div class="axis-control" data-axis="1"><span class="axis-name">Y <small>DOWN / UP</small></span><div><button data-axis="1" data-sign="-1" aria-label="Move negative Y">−Y <kbd>↓</kbd></button><button data-axis="1" data-sign="1" aria-label="Move positive Y">+Y <kbd>↑</kbd></button></div></div>
+    <div class="axis-control" data-axis="2"><span class="axis-name">Z <small>LOWER / HIGHER</small></span><div><button data-axis="2" data-sign="-1" aria-label="Move negative Z">−Z <kbd>F</kbd></button><button data-axis="2" data-sign="1" aria-label="Move positive Z">+Z <kbd>R</kbd></button></div></div>
+    <div class="axis-control w-control" data-axis="3"><span class="axis-name">W <small>ANA / KATA</small></span><div><button data-axis="3" data-sign="-1" aria-label="Move negative W">−W <kbd>Q</kbd></button><button data-axis="3" data-sign="1" aria-label="Move positive W">+W <kbd>E</kbd></button></div></div>
+  </div>
+  <div class="status-line" id="status" role="status" aria-live="polite">Move +X to approach the wall.</div>
+  <div class="game-actions"><button id="undo" class="quiet" disabled>↶ Undo</button><button id="restart" class="quiet">↻ Restart</button><button id="newMaze" class="quiet" hidden>New seed</button><button id="hint" class="hint-button">One-step hint <span>↗</span></button></div>
+</section>
+<aside class="side-column">
+<section class="lesson-card panel"><div class="card-label"><span class="small-orbit">✧</span> THE IDEA</div><h3 id="lessonHeadline">Go around the impossible.</h3><p id="lessonCopy"></p><div class="goal-box"><span>DESTINATION</span><strong id="goalCoords"></strong></div><div class="progress-track"><div id="progressFill"></div></div><div class="progress-label" id="progressLabel"></div></section>
+<section class="projection-panel panel"><div class="projection-heading"><div><p class="eyebrow">THE BIGGER PICTURE</p><h3>A 4D shadow</h3></div><span class="tiny-tag">PROJECTION</span></div><canvas id="projection" role="img" aria-label="Projected overview of the four-dimensional maze. Crossings are not necessarily connections."></canvas><div class="projection-controls"><label for="rotation">Rotate XW plane</label><output id="angle">24°</output><input id="rotation" type="range" min="0" max="180" value="24" aria-label="Rotate the projected view in the XW plane"></div><div class="projection-legend"><span class="axis-x">X</span><span class="axis-y">Y</span><span class="axis-z">Z</span><span class="axis-w">W</span><span>Passages colored by axis</span></div><p class="fine-print">A lower-dimensional view, like a cube drawn on paper. Rotation changes the view, not your position. Crossing lines do not connect.</p></section>
+<section class="insight-card"><span class="insight-icon">↗</span><p><strong>Watch the coordinates.</strong> A W step changes only W. Your X, Y and Z stay exactly where they are.</p></section>
+</aside>
+</div>
+<footer><span>FOUR SPATIAL AXES. ONE CONNECTED SPACE.</span><span>Local-first · No accounts · No tracking</span></footer>
+</main>
+</div>
+<dialog id="guide" aria-labelledby="guideTitle"><div class="dialog-top"><p class="eyebrow">A SHORT FIELD GUIDE</p><button class="close" id="guideClose" aria-label="Close guide">×</button></div><h2 id="guideTitle">W is a direction,<br>not a destination.</h2><p>You know three independent spatial directions. Here, W is a fourth: moving in W does not move you in X, Y or Z.</p><ol class="guide-list"><li><strong>Read the exact slice.</strong> The main map shows two axes. The other two are held at your current coordinates. Change “View plane” to put W directly on the map.</li><li><strong>Follow the passages.</strong> Bright movement buttons are open. A dot is a room; a line joins adjacent rooms. Badges on your room show exits outside the displayed plane.</li><li><strong>Step into W.</strong> In the first maze, the barrier ends in W. Step out of its slice, walk around it, then step back. Some barriers can span multiple W slices.</li><li><strong>Reach all four coordinates.</strong> Matching the exit’s X and Y is not enough. Z and W must match, too.</li></ol><div class="guide-keys"><strong>Keyboard</strong><span>← → : X &nbsp; ↓ ↑ : Y &nbsp; F / R : Z &nbsp; Q / E : W<br>Touch: use the eight labeled buttons below the map.</span></div><label class="shortcut-option"><input type="checkbox" id="shortcuts" checked> Enable keyboard shortcuts (turn off for speech input)</label><p class="fine-print">“Ana” and “kata” are traditional names for opposite fourth-dimensional directions. This is an intuition-building prototype, not a validated cognitive training program. The projection is not a literal view of 4D space.</p><button id="guidePlay" class="primary">Let’s explore <span>→</span></button></dialog>
+<dialog id="win" aria-labelledby="winTitle"><div class="dialog-top"><p class="eyebrow">ROUTE COMPLETE</p><button class="close" id="winClose" aria-label="Close results">×</button></div><div class="win-symbol" aria-hidden="true">✧</div><h2 id="winTitle">You found another way.</h2><p id="winInsight"></p><div id="winStats" class="win-stats"></div><button id="nextLevel" class="primary">Next experience <span>→</span></button><button id="replay" class="quiet replay">Explore this maze again</button></dialog>
+<script>/* Fourth Space: a finite, orthogonal four-dimensional cell complex. */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.FourthSpace = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const AXES = ['X', 'Y', 'Z', 'W'];
+  const key = p => p.join(',');
+  const edgeKey = (a,b) => [key(a),key(b)].sort().join('|');
+  const point = k => k.split(',').map(Number);
+  const same = (a, b) => a.every((v, i) => v === b[i]);
+  function delta(a, b) {
+    const diff = b.map((v, i) => v - a[i]);
+    if (diff.reduce((n, v) => n + Math.abs(v), 0) !== 1) return null;
+    const axis = diff.findIndex(v => v !== 0);
+    return { axis, sign: diff[axis] };
+  }
+  function makeGraph(dims) { return { dims: [...dims], cells: new Map(), edges: new Map() }; }
+  function addCell(g, p) {
+    if (p.length !== 4 || p.some((v, i) => !Number.isInteger(v) || v < 0 || v >= g.dims[i])) throw Error('Cell outside four-dimensional bounds');
+    const k = key(p);
+    if (!g.cells.has(k)) { g.cells.set(k, [...p]); g.edges.set(k, new Set()); }
+  }
+  function connect(g, a, b) {
+    if (!delta(a, b)) throw Error('A passage must change exactly one coordinate by one');
+    addCell(g, a); addCell(g, b);
+    g.edges.get(key(a)).add(key(b)); g.edges.get(key(b)).add(key(a));
+  }
+  function addPath(g, path) { path.forEach(p => addCell(g, p)); for (let i = 1; i < path.length; i++) connect(g, path[i - 1], path[i]); }
+  function next(g, p, axis, sign) {
+    if (!Number.isInteger(axis) || axis < 0 || axis > 3 || (sign !== 1 && sign !== -1)) return null;
+    const q = [...p]; q[axis] += sign;
+    return g.edges.get(key(p))?.has(key(q)) ? q : null;
+  }
+  function shortest(g, start, goal, bannedAxis = -1) {
+    if (!g.cells.has(key(start)) || !g.cells.has(key(goal))) return null;
+    const queue = [key(start)], previous = new Map([[key(start), null]]);
+    for (let i = 0; i < queue.length; i++) {
+      const k = queue[i]; if (k === key(goal)) break;
+      for (const n of g.edges.get(k)) {
+        if (previous.has(n) || delta(point(k), point(n)).axis === bannedAxis) continue;
+        previous.set(n, k); queue.push(n);
+      }
+    }
+    if (!previous.has(key(goal))) return null;
+    const path = []; let cursor = key(goal);
+    while (cursor !== null) { path.push(point(cursor)); cursor = previous.get(cursor); }
+    return path.reverse();
+  }
+  function rng(seed) { let a = seed >>> 0; return function () { a += 0x6D2B79F5; let t = a; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function generated(seed, dims = [4, 4, 3, 3]) {
+    const g = makeGraph(dims), random = rng(seed), start = [0, 0, 0, 0];
+    addCell(g, start); const stack = [start];
+    while (stack.length) {
+      const p = stack[stack.length - 1], options = [];
+      for (let axis = 0; axis < 4; axis++) for (const sign of [-1, 1]) {
+        const q = [...p]; q[axis] += sign;
+        if (q[axis] >= 0 && q[axis] < dims[axis] && !g.cells.has(key(q))) options.push(q);
+      }
+      if (!options.length) { stack.pop(); continue; }
+      const q = options[Math.floor(random() * options.length)]; connect(g, p, q); stack.push(q);
+    }
+    // A perfect 4D maze: connected, no cycles, one route between any two cells.
+    const candidates = [...g.cells.values()].filter(p => p[3] === 0 && p[2] > 0 && p[0] > 0 && p[1] > 0);
+    let goal = start, distance = -1;
+    for (const p of candidates) {
+      const path = shortest(g, start, p), used = new Set(path.slice(1).map((q, i) => delta(path[i], q).axis));
+      if (used.size === 4 && path.length > distance) { goal = p; distance = path.length; }
+    }
+    return { ...g, start, goal: [...goal], seed };
+  }
+  function level(id, seed = 2048) {
+    if (id === 0) {
+      const g = makeGraph([5, 3, 1, 2]);
+      addPath(g, [[0,1,0,0],[1,1,0,0],[1,1,0,1],[2,1,0,1],[3,1,0,1],[3,1,0,0],[4,1,0,0]]);
+      addPath(g, [[0,1,0,0],[0,2,0,0],[1,2,0,0]]);
+      addPath(g, [[2,1,0,1],[2,0,0,1]]);
+      return { ...g, start:[0,1,0,0], goal:[4,1,0,0], title:'Beyond the wall', subtitle:'Meet a new direction', lesson:'A wall blocks the X route. Step along W, walk around its edge, then return to W = 0.', insight:'You went around a wall in a direction that does not exist in XYZ space. W was a spatial step, not time or teleportation.' };
+    }
+    if (id === 1) {
+      const g = makeGraph([4, 3, 3, 3]);
+      addPath(g, [[0,0,0,0],[1,0,0,0],[1,1,0,0],[1,1,1,0],[1,1,1,1],[2,1,1,1],[2,1,1,2],[2,2,1,2],[2,2,2,2],[3,2,2,2],[3,2,2,1],[3,2,2,0]]);
+      addPath(g, [[1,1,1,0],[0,1,1,0],[0,2,1,0]]);
+      addPath(g, [[2,1,1,1],[2,0,1,1],[3,0,1,1]]);
+      addPath(g, [[2,2,1,2],[1,2,1,2]]);
+      return { ...g, start:[0,0,0,0], goal:[3,2,2,0], title:'Four directions', subtitle:'Use every spatial axis', lesson:'Now Z has room to move, too. Use Z to change height and W to move perpendicular to all three familiar axes.', insight:'Z and W are independent. Moving in W preserved X, Y and Z; moving in Z preserved X, Y and W.' };
+    }
+    if (id === 2) {
+      const g = generated(seed);
+      return { ...g, title:'The hypermaze', subtitle:'Find your own route', lesson:'A seeded maze spanning all four axes. Follow passages, use other planes when they help, and ask for one step if you get stuck.', insight:'You navigated a connected four-dimensional maze. Try a different seed, or reduce visual assistance and build a mental map.' };
+    }
+    const g = makeGraph([3,3,3,3]);
+    for (let x=0;x<3;x++) for(let y=0;y<3;y++) for(let z=0;z<3;z++) for(let w=0;w<3;w++) addCell(g,[x,y,z,w]);
+    for(const p of g.cells.values()) for(let a=0;a<4;a++) { const q=[...p]; q[a]++; if(q[a]<3) connect(g,p,q); }
+    return { ...g, start:[1,1,1,1], goal:null, title:'Open space', subtitle:'Explore without walls', lesson:'Eight possible directions at each interior cell: ±X, ±Y, ±Z and ±W. Switch planes and notice that W behaves just like another spatial axis.', insight:'' };
+  }
+  function rotate4(p, axisA, axisB, radians) {
+    const q = [...p], c = Math.cos(radians), s = Math.sin(radians);
+    q[axisA] = p[axisA]*c - p[axisB]*s;
+    q[axisB] = p[axisA]*s + p[axisB]*c; return q;
+  }
+  return { AXES, key, edgeKey, point, same, delta, makeGraph, addCell, connect, addPath, next, shortest, rng, generated, level, rotate4 };
+});
+</script><script>(() => {
+  'use strict';
+  const F = window.FourthSpace, $ = id => document.getElementById(id);
+  const colors = ['#9ec9ff', '#f4c180', '#bfa3ff', '#8cf1c6'];
+  const state = { id: 0, seed: 2048, graph: null, position: [], history: [], visited: new Set(), traversed: new Set(), moves: 0, hints: 0, undos: 0, won: false, plane: [0,1], rotation: 24, hint: null };
+  let storage = {};
+  try { storage = JSON.parse(localStorage.getItem('fourth-space-v1') || '{}'); if (!storage || typeof storage !== 'object') storage = {}; } catch { storage = {}; }
+  function save() { try { localStorage.setItem('fourth-space-v1', JSON.stringify(storage)); } catch { /* Private browsing / file origin can disable storage. Play still works. */ } }
+  function recordKey() { return `${state.id}:${state.id === 2 ? state.seed : 'lesson'}`; }
+  function say(message) { $('status').textContent = message; }
+  function load(id) {
+    state.id = id; state.graph = F.level(id, state.seed); state.position = [...state.graph.start];
+    state.history = [[...state.position]]; state.visited = new Set([F.key(state.position)]); state.traversed = new Set();
+    state.moves = 0; state.hints = 0; state.undos = 0; state.won = false; state.hint = null;
+    $('win').close(); document.querySelectorAll('.level-tab').forEach(b => { const active = Number(b.dataset.level) === id; b.classList.toggle('active', active); b.setAttribute('aria-current', active ? 'step' : 'false'); });
+    $('levelTitle').textContent = state.graph.title; $('levelSubtitle').textContent = state.graph.subtitle.toUpperCase();
+    $('lessonCopy').textContent = state.graph.lesson;
+    $('lessonHeadline').textContent = ['Go around the impossible.', 'Same space. More freedom.', 'Build a four-axis mental map.', 'What does W feel like?'][id];
+    $('goalCoords').textContent = state.graph.goal ? state.graph.goal.map((v,i) => `${F.AXES[i]}${v}`).join('  ') : 'NO GOAL · JUST EXPLORE';
+    $('newMaze').hidden = id !== 2; $('seedLabel').hidden = id !== 2; $('seedLabel').textContent = `SEED ${state.seed}`;
+    $('hint').hidden = id === 3; $('best').textContent = storage[recordKey()]?.moves ?? '—';
+    say(id === 0 ? 'Try +X. Then use +W to step around the barrier.' : id === 3 ? 'Try a W step. Only the W coordinate changes.' : 'Find the pink exit. Every coordinate must match.');
+    render();
+  }
+  function move(axis, sign) {
+    if (state.won || $('guide').open || $('win').open) return;
+    const q = F.next(state.graph, state.position, axis, sign);
+    if (!q) { say(`No passage in ${sign > 0 ? '+' : '−'}${F.AXES[axis]}. Bright buttons show the available directions.`); return; }
+    state.traversed.add(F.edgeKey(state.position, q)); state.position = q; state.history.push([...q]); state.visited.add(F.key(q)); state.moves++; state.hint = null;
+    say(axis === 3 ? `W is now ${q[3]}. X = ${q[0]}, Y = ${q[1]} and Z = ${q[2]} stayed the same.` : `${sign > 0 ? '+' : '−'}${F.AXES[axis]}: now (${q.join(', ')}).`);
+    if (state.graph.goal && F.same(q, state.graph.goal)) finish();
+    render(axis);
+  }
+  function finish() {
+    state.won = true;
+    const best = storage[recordKey()];
+    if (!best || state.moves < best.moves) { storage[recordKey()] = { moves:state.moves, hints:state.hints, undos:state.undos }; save(); }
+    $('best').textContent = storage[recordKey()].moves;
+    $('winInsight').textContent = state.graph.insight;
+    const optimal = F.shortest(state.graph, state.graph.start, state.graph.goal).length - 1;
+    $('winStats').replaceChildren();
+    for (const [value, label] of [[state.moves, 'YOUR MOVES'], [optimal, 'SHORTEST ROUTE'], [state.hints, 'HINTS USED']]) {
+      const box = document.createElement('div'), strong = document.createElement('strong'), span = document.createElement('span'); strong.textContent = value; span.textContent = label; box.append(strong,span); $('winStats').append(box);
+    }
+    $('nextLevel').firstChild.textContent = state.id === 2 ? 'Explore open space ' : 'Next experience ';
+    say(`Exit reached in ${state.moves} moves. All four coordinates match. Restart or choose another experience.`);
+    $('win').showModal();
+  }
+  function hint() {
+    if (state.won || !state.graph.goal) return;
+    const path = F.shortest(state.graph, state.position, state.graph.goal);
+    if (!path || path.length < 2) return;
+    state.hint = F.delta(path[0],path[1]); state.hints++;
+    const {axis,sign} = state.hint;
+    say(`One step: ${sign > 0 ? '+' : '−'}${F.AXES[axis]}. The other three coordinates stay unchanged.`);
+    render();
+  }
+  function undo() {
+    if (state.history.length < 2 || state.won) return;
+    state.history.pop(); state.position = [...state.history.at(-1)]; state.undos++; state.hint = null;
+    say('Previous position restored. Move count keeps your total forward steps.'); render();
+  }
+  function fit(canvas) {
+    const rect = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.max(1, rect.width), h = Math.max(1,rect.height);
+    if (canvas.width !== Math.round(w*dpr) || canvas.height !== Math.round(h*dpr)) { canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr); }
+    const ctx = canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,h); return {ctx,w,h};
+  }
+  function circle(ctx, x, y, r, fill, stroke, width = 1) {
+    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+    if (fill) { ctx.fillStyle = fill; ctx.fill(); } if (stroke) { ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
+  }
+  function line(ctx, x1,y1,x2,y2,color,width=1) { ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.strokeStyle=color; ctx.lineWidth=width; ctx.lineCap='round'; ctx.stroke(); }
+  function diamond(ctx,x,y,r,fill) { ctx.beginPath(); ctx.moveTo(x,y-r); ctx.lineTo(x+r,y); ctx.lineTo(x,y+r); ctx.lineTo(x-r,y); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); }
+  function text(ctx, content,x,y,color,size=10,align='center') { ctx.fillStyle=color; ctx.font=`${size}px ui-monospace, SFMono-Regular, monospace`; ctx.textAlign=align; ctx.textBaseline='middle'; ctx.fillText(content,x,y); }
+  function drawSlice(canvas, position, axes, mini = false, outOfBounds = false) {
+    const {ctx,w,h} = fit(canvas), g = state.graph;
+    if (outOfBounds) { text(ctx,'EDGE OF SPACE',w/2,h/2+5,'#617b87',mini?8:11); return; }
+    const [a,b] = axes, fixed = [0,1,2,3].filter(i => !axes.includes(i));
+    const marginX = mini ? 25 : 53, marginY = mini ? 25 : 42;
+    const gridW = Math.max(1,g.dims[a]-1), gridH = Math.max(1,g.dims[b]-1);
+    const step = Math.min((w-2*marginX)/gridW,(h-2*marginY)/gridH,mini?34:76);
+    const x0=(w-(g.dims[a]-1)*step)/2, y0=(h+(g.dims[b]-1)*step)/2;
+    const project=p=>[x0+p[a]*step,y0-p[b]*step];
+    const onSlice=p=>fixed.every(i=>p[i]===position[i]);
+    if (!mini) {
+      for(let x=0;x<g.dims[a];x++) for(let y=0;y<g.dims[b];y++) {
+        const px=x0+x*step, py=y0-y*step;
+        circle(ctx,px,py,1.5,'#2a3f4b');
+      }
+      for(let x=0;x<g.dims[a];x++) text(ctx,String(x),x0+x*step,y0+25,'#587786',9);
+      for(let y=0;y<g.dims[b];y++) text(ctx,String(y),x0-24,y0-y*step,'#587786',9);
+      text(ctx,`${F.AXES[a]} →`,Math.min(w-24,x0+(g.dims[a]-1)*step+36),y0+25,colors[a],10);
+      text(ctx,`${F.AXES[b]} ↑`,x0-24,Math.max(14,y0-(g.dims[b]-1)*step-25),colors[b],10);
+    }
+    const sliceCells=[...g.cells.values()].filter(onSlice);
+    for (const p of sliceCells) for (const nk of g.edges.get(F.key(p))) {
+      const q=g.cells.get(nk); if (!onSlice(q) || F.key(p)>nk) continue;
+      const [x1,y1]=project(p), [x2,y2]=project(q), visited=state.traversed.has(F.edgeKey(p,q));
+      line(ctx,x1,y1,x2,y2,visited && $('trail').checked?'#628a86':mini?'#3c5e6b':'#365261',mini?2.5:7);
+      if(!mini) line(ctx,x1,y1,x2,y2,visited && $('trail').checked?'#9dd9c3':'#6d94a5',1.3);
+    }
+    for (const p of sliceCells) {
+      const [x,y]=project(p), isPlayer=F.same(p,state.position), visited=state.visited.has(F.key(p));
+      circle(ctx,x,y,mini?3.5:9,visited && $('trail').checked?'#395e59':'#203947',mini?null:'#6b8794',1.2);
+      if(!mini && !isPlayer) {
+        const exits=[];
+        for(const axis of fixed) for(const sign of [-1,1]) if(F.next(g,p,axis,sign)) exits.push({axis,sign});
+        if (exits.length) {
+          const n=Math.min(exits.length,4);
+          exits.slice(0,n).forEach((e,i)=>circle(ctx,x-((n-1)*3)+i*6,y-15,2.1,colors[e.axis]));
+        }
+      }
+      if (g.goal && F.same(p,g.goal)) { if(!mini) circle(ctx,x,y,16,'#ff9cb810'); diamond(ctx,x,y,mini?5.5:9,'#ff9cb8'); }
+    }
+    if (mini) {
+      const [x,y]=project(state.position);
+      circle(ctx,x,y,6,null,'#c3fbe277',1.2);
+      line(ctx,x-9,y,x-5,y,'#c3fbe277'); line(ctx,x+5,y,x+9,y,'#c3fbe277');
+    } else {
+      const [x,y]=project(state.position);
+      circle(ctx,x,y,23,'#acf6d209'); circle(ctx,x,y,16,'#acf6d213','#acf6d25a',1); circle(ctx,x,y,8,'#acf6d2'); circle(ctx,x-2,y-2,2.2,'#f0fff7');
+      const exits=[]; for(const axis of fixed) for(const sign of [-1,1]) if(F.next(g,state.position,axis,sign)) exits.push({axis,sign});
+      const label=exits.map(e=>`${e.sign>0?'+':'−'}${F.AXES[e.axis]}`).join('  ');
+      if(label) {
+        ctx.font='10px ui-monospace,monospace'; const width=ctx.measureText(label).width+16, yy=y-32;
+        ctx.fillStyle='#17352d'; ctx.fillRect(x-width/2,yy-9,width,18); text(ctx,label,x,yy,'#b4f8d8',10);
+      }
+      if(!sliceCells.length) text(ctx,'No rooms in this slice',w/2,h/2,'#8eabb9',12);
+    }
+  }
+  function drawProjection() {
+    const {ctx,w,h}=fit($('projection')), g=state.graph;
+    const center=g.dims.map(n=>(n-1)/2), max=Math.max(...g.dims.map(n=>n-1),1);
+    const normalize=p=>p.map((v,i)=>(v-center[i])*2/max);
+    function project(p) {
+      const q=F.rotate4(normalize(p),0,3,state.rotation*Math.PI/180), persp=3.6/(3.6-q[3]);
+      const x=q[0]*persp,z=q[2]*persp,y=q[1]*persp;
+      return [x*.9+z*.55,-y+z*.32,q[3]];
+    }
+    const items=[...g.cells.values()].map(p=>({p,r:project(p)}));
+    const xs=items.map(i=>i.r[0]),ys=items.map(i=>i.r[1]);
+    const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+    const scale=Math.min((w-44)/Math.max(.8,maxX-minX),(h-40)/Math.max(.8,maxY-minY));
+    const place=r=>[w/2+(r[0]-(minX+maxX)/2)*scale,h/2+(r[1]-(minY+maxY)/2)*scale];
+    const projected=new Map(items.map(i=>[F.key(i.p),place(i.r)]));
+    // Quiet coordinate grid is background only, never interpreted as connections.
+    for(let x=12;x<w;x+=22) for(let y=18;y<h;y+=22) circle(ctx,x,y,.6,'#2b3b44');
+    for(const p of g.cells.values()) for(const nk of g.edges.get(F.key(p))) {
+      if(F.key(p)>nk) continue;
+      const q=g.cells.get(nk), a=F.delta(p,q).axis;
+      const current=F.same(p,state.position)||F.same(q,state.position), slice=p[2]===state.position[2]&&p[3]===state.position[3]&&q[2]===state.position[2]&&q[3]===state.position[3];
+      const [x1,y1]=projected.get(F.key(p)),[x2,y2]=projected.get(nk);
+      line(ctx,x1,y1,x2,y2,colors[a]+(current?'ff':slice?'a0':state.id>=2?'36':'80'),current?2.5:slice?1.5:1);
+    }
+    for(const {p} of items) {
+      const [x,y]=projected.get(F.key(p));
+      circle(ctx,x,y,state.id>=2?1.6:3,'#69838f');
+      if(g.goal && F.same(p,g.goal)) diamond(ctx,x,y,5,'#ff9cb8');
+    }
+    const [x,y]=projected.get(F.key(state.position));
+    circle(ctx,x,y,12,'#acf6d211','#acf6d255'); circle(ctx,x,y,5,'#acf6d2');
+  }
+  function render(changedAxis = -1) {
+    $('moves').textContent=state.moves; $('coords').replaceChildren();
+    state.position.forEach((v,i)=>{const el=document.createElement('div'),label=document.createElement('span');el.className='coord'+(i===changedAxis?' changed':'');label.textContent=F.AXES[i];el.append(label,document.createTextNode(String(v)));$('coords').append(el);});
+    $('coords').setAttribute('aria-label',state.position.map((v,i)=>`${F.AXES[i]} ${v}`).join(', '));
+    const fixed=[0,1,2,3].filter(i=>!state.plane.includes(i));
+    $('sliceLabel').textContent=fixed.map(i=>`${F.AXES[i]} = ${state.position[i]}`).join(' · ');
+    document.querySelectorAll('button[data-axis]').forEach(button=>{
+      const a=Number(button.dataset.axis),s=Number(button.dataset.sign),available=!!F.next(state.graph,state.position,a,s);
+      button.disabled=state.won||!available;
+      button.title=available?`Move ${s>0?'+':'−'}${F.AXES[a]}`:'No passage in this direction';
+      button.classList.toggle('hinted',!!state.hint&&state.hint.axis===a&&state.hint.sign===s);
+    });
+    $('undo').disabled=state.won||state.history.length<2; $('hint').disabled=state.won;
+    $('progressFill').style.width=`${100*state.visited.size/state.graph.cells.size}%`;
+    $('progressLabel').textContent=`${state.visited.size} / ${state.graph.cells.size} rooms visited${state.id===2?` · seed ${state.seed}`:''}`;
+    drawSlice($('maze'),state.position,state.plane);
+    for(const [sign,canvas,label] of [[-1,'minusPreview','minusLabel'],[1,'plusPreview','plusLabel']]) {
+      const pos=[...state.position];pos[3]+=sign;
+      const out=pos[3]<0||pos[3]>=state.graph.dims[3], legal=!!F.next(state.graph,state.position,3,sign);
+      $(label).textContent=out?`W ${sign<0?'−':'+'} 1 · BOUNDARY`:`W = ${pos[3]} · ${legal?'PASSAGE OPEN':'NO DIRECT PASSAGE'}`;
+      drawSlice($(canvas),pos,[0,1],true,out);
+    }
+    $('previewLabel').textContent=`XY slices · Z = ${state.position[2]} · ring = your XYZ`;
+    drawProjection();
+  }
+  document.querySelectorAll('button[data-axis]').forEach(b=>b.addEventListener('click',()=>move(Number(b.dataset.axis),Number(b.dataset.sign))));
+  document.querySelectorAll('.level-tab').forEach(b=>b.addEventListener('click',()=>load(Number(b.dataset.level))));
+  $('undo').addEventListener('click',undo); $('restart').addEventListener('click',()=>load(state.id)); $('hint').addEventListener('click',hint);
+  $('newMaze').addEventListener('click',()=>{state.seed=(state.seed+7919)%1000000;load(2);});
+  $('plane').addEventListener('change',()=>{state.plane=$('plane').value.split(',').map(Number);say(`Viewing ${state.plane.map(i=>F.AXES[i]).join('')}. Your position and fixed-axis controls did not change.`);render();});
+  $('trail').addEventListener('change',()=>render());
+  $('shortcuts').checked = storage.shortcuts !== false;
+  $('shortcuts').addEventListener('change',()=>{storage.shortcuts=$('shortcuts').checked;save();});
+  $('rotation').addEventListener('input',()=>{state.rotation=Number($('rotation').value);$('angle').textContent=`${state.rotation}°`;drawProjection();});
+  $('guideOpen').addEventListener('click',()=>$('guide').showModal()); $('guideClose').addEventListener('click',()=>$('guide').close()); $('guidePlay').addEventListener('click',()=>$('guide').close());
+  $('winClose').addEventListener('click',()=>$('win').close()); $('nextLevel').addEventListener('click',()=>load(Math.min(state.id+1,3))); $('replay').addEventListener('click',()=>load(state.id));
+  for (const dialog of [$('guide'),$('win')]) dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
+  document.addEventListener('keydown',event=>{
+    if(!$('shortcuts').checked||event.ctrlKey||event.metaKey||event.altKey||$('guide').open||$('win').open||event.target.closest('input,select,textarea'))return;
+    const binding={ArrowLeft:[0,-1],ArrowRight:[0,1],ArrowDown:[1,-1],ArrowUp:[1,1],f:[2,-1],r:[2,1],q:[3,-1],e:[3,1]}[event.key.length===1?event.key.toLowerCase():event.key];
+    if(binding){event.preventDefault();if(!event.repeat)move(...binding);}
+  });
+  let resizePending=false;window.addEventListener('resize',()=>{if(resizePending)return;resizePending=true;requestAnimationFrame(()=>{resizePending=false;render();});});
+  load(0);
+})();
+</script>
+</body></html>

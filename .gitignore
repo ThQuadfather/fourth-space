@@ -1,0 +1,12 @@
+# Local preview metadata and temporary QA page
+.openai/
+dist/qa-mobile.html
+
+# Local tooling and credentials
+node_modules/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+coverage/
